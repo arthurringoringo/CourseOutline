@@ -1,0 +1,6 @@
+    <div class="m-5">
+       <form action = "{% url 'coursecreate' %}" method="POST"> 
+       {% csrf_token %}
+          {{form}}
+            <button type="submit" class="btn btn-primary mb-2" >Create</button>
+       </form>
