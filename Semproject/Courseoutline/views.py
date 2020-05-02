@@ -10,7 +10,7 @@ from datetime import datetime
 # Create your views here.
 
 def CourseoutlineCreate(request,template_name='courseoutline/test.html'):
-    form = CreateForm(request.POST)
+    form1 = CreateForm(request.POST)
     
     context = {'form':form}
     return render(request,'courseoutline/test.html',context)
