@@ -3,5 +3,11 @@ from django.urls import path
 from . import views
 
 urlpatterns = [
-     path('',views.CourseoutlineCreate,name='coursecreate'),
+     path('',views.IndexMenu,name='indexmenu'),
+     path('create/curriculum/',views.CuriculumCreate,name='curriculumcreate'),
+     path('',views.IndexMenu,name='indexmenu'),
+     path('',views.IndexMenu,name='indexmenu'),
+     path('',views.IndexMenu,name='indexmenu'),
+     path('',views.IndexMenu,name='indexmenu'),
+     path('',views.IndexMenu,name='indexmenu'),
 ]

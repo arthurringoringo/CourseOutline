@@ -6,7 +6,7 @@ from django.forms import ModelForm
 class CreateCurriculumForm(forms.ModelForm):
     CurriculumID = forms.CharField(widget=forms.TextInput(attrs={'class':'form-control'}))
     CurriculumName = forms.CharField(widget=forms.TextInput(attrs={'class':'form-control'}))
-    FacultyName = forms.CharField(label='Faculty Name?', widget=forms.Select(choices=FacultyNameChoices))
+    FacultyName = forms.ChoiceField(label='Faculty Name?',widget=forms.Select())
     class Meta:
         model = CourseOutline
         fields = 'CurriculumID', 'CurriculumName', 'FacultyName'
@@ -27,7 +27,7 @@ class CreateCourseOutlineForm1(forms.ModelForm):
     Prerequisite = forms.CharField(widget=forms.TextInput(attrs={'class':'form-control'}))
     Corequisite = forms.CharField(widget=forms.TextInput(attrs={'class':'form-control'}))
     Place = forms.CharField(widget=forms.TextInput(attrs={'class':'form-control'}))
-    # DateofCourseDevelopmentorRevision = forms
+    DateofCourseDevelopmentorRevision = forms.DateField()
     class Meta:
         model = CourseOutline
         fields = 'SectionID', 'SectionName', 'NumberOfCredit', 'CategoryOfCourse', 'Prerequisite', 'Corequisite', 'Place', 'DateofCourseDevelopmentorRevision'

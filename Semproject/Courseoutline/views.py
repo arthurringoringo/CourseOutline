@@ -9,8 +9,18 @@ from datetime import datetime
 
 # Create your views here.
 
+def IndexMenu(request,tempalate_name='courseoutline/index.html'):
+    return render(request,'courseoutline/index.html')
+
+
 def CourseoutlineCreate(request,template_name='courseoutline/test.html'):
-    form1 = CreateForm(request.POST)
+    form1 = CreateCourseOutlineForm(request.POST)
     
-    context = {'form':form}
+    context = {'form':form1}
     return render(request,'courseoutline/test.html',context)
+
+def CuriculumCreate(request,template_name='Courseoutline/curriculumSection.html'):
+    curriculumForm = CreateCurriculumForm(request.POST)
+    
+    context = {'curriculumForm': curriculumForm}
+    return render(request,'Courseoutline/curriculumSection.html',context)
