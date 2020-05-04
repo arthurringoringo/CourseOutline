@@ -1,0 +1,46 @@
+<!-- Curriculum Section -->
+{% extends "Courseoutline/generic_index.html" %}
+
+{% block content %}
+
+    <div>
+    {% if request.get_full_path == "/courseoutline/create/curriculum/"%}    
+        <form action = "{% url 'curriculumcreate' %}" method="POST"> 
+            {% csrf_token %}
+            {{curriculumForm}}
+                <button type="submit" class="btn btn-primary mb-2" >Next</button>
+        </form>
+    {% else %}
+    <form action="" method="POST"> 
+      {% csrf_token %}
+            <label for="id_CurriculumName">Curriculumname:</label><input type="text" name="CurriculumName" class="form-control" required id="id_CurriculumName" value="{{curriculum.CurriculumName}}">
+            <label for="id_FacultyName">Faculty Name?</label><select name="FacultyName" class="form-control" id="id_FacultyName" value = "{{curriculum.FacultyName}}">
+                <option value="FAH">Arts And Humanities</option>
+
+                <option value="FBA">Business Admin</option>
+
+                <option value="FEd">Education</option>
+
+                <option value="FRS">Religous Studies</option>
+
+                <option value="FOS">Science</option>
+
+                <option value="FIT">Information Technology</option>
+
+                <option value="FON">Nursing</option>
+
+                </select>
+                <button type="submit" class="btn btn-primary mb-2">Update</button>
+        </form>
+          
+        <form action = "{% url 'curriculumdelete' curriculum.CurriculumID %}" method="POST">
+            {% csrf_token %}
+            <button type="submit" class="btn btn-danger">Delete</button>
+        </form>
+            
+
+
+    {% endif %} 
+    </div> 
+{% endblock %}
+

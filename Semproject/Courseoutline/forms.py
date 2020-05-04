@@ -1,15 +1,16 @@
 from django import forms
 from .models import *
 from django.forms import ModelForm
+from .choices import *
 
 
 class CreateCurriculumForm(forms.ModelForm):
-    CurriculumID = forms.CharField(widget=forms.TextInput(attrs={'class':'form-control'}))
-    CurriculumName = forms.CharField(widget=forms.TextInput(attrs={'class':'form-control'}))
-    FacultyName = forms.ChoiceField(label='Faculty Name?',widget=forms.Select())
+    
+    CurriculumName = forms.CharField(widget=forms.TextInput(attrs={'class':'form-control'}),label='Curriculum Name:')
+    FacultyName = forms.ChoiceField(widget=forms.Select(attrs={'class':'form-control'}),label='Faculty Name:',choices = FacultyNameChoices)
     class Meta:
-        model = CourseOutline
-        fields = 'CurriculumID', 'CurriculumName', 'FacultyName'
+        model = Curriculum
+        fields = 'CurriculumName', 'FacultyName'
 
 class CreateCourseOutlineForm(forms.ModelForm):
     CourseOutlineID = forms.CharField(widget=forms.TextInput(attrs={'class':'form-control'}))
