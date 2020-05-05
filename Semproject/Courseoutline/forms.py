@@ -1,15 +1,16 @@
 from django import forms
 from .models import *
 from django.forms import ModelForm
+from .choices import *
 
 
 class CreateCurriculumForm(forms.ModelForm):
-    CurriculumID = forms.CharField(widget=forms.TextInput(attrs={'class':'form-control'}))
-    CurriculumName = forms.CharField(widget=forms.TextInput(attrs={'class':'form-control'}))
-    FacultyName = forms.CharField(label='Faculty Name?', widget=forms.Select(choices=FacultyNameChoices))
+    
+    CurriculumName = forms.CharField(widget=forms.TextInput(attrs={'class':'form-control'}),label='Curriculum Name:')
+    FacultyName = forms.ChoiceField(widget=forms.Select(attrs={'class':'form-control'}),label='Faculty Name:',choices = FacultyNameChoices)
     class Meta:
-        model = CourseOutline
-        fields = 'CurriculumID', 'CurriculumName', 'FacultyName'
+        model = Curriculum
+        fields = 'CurriculumName', 'FacultyName'
 
 class CreateCourseOutlineForm(forms.ModelForm):
     CourseOutlineID = forms.CharField(widget=forms.TextInput(attrs={'class':'form-control'}))
@@ -27,7 +28,7 @@ class CreateCourseOutlineForm1(forms.ModelForm):
     Prerequisite = forms.CharField(widget=forms.TextInput(attrs={'class':'form-control'}))
     Corequisite = forms.CharField(widget=forms.TextInput(attrs={'class':'form-control'}))
     Place = forms.CharField(widget=forms.TextInput(attrs={'class':'form-control'}))
-    # DateofCourseDevelopmentorRevision = forms
+    DateofCourseDevelopmentorRevision = forms.DateField()
     class Meta:
         model = CourseOutline
         fields = 'SectionID', 'SectionName', 'NumberOfCredit', 'CategoryOfCourse', 'Prerequisite', 'Corequisite', 'Place', 'DateofCourseDevelopmentorRevision'

@@ -1,37 +1,21 @@
 from django.db import models
 from django.utils import timezone
 import datetime
+from .choices import *
 
 
 
 # Create your models here.
-FacultyNameChoices = [
-    ('FAH','Arts And Humanities'),('FBA','Business Admin'),
-    ('FEd','Education'),('FRS','Religous Studies'),('FOS','Science'),
-    ('FIT','Information Technology'),('FON','Nursing')]
-CourseCategory = [
-    ('Core Course','Core Course'),('General Education Course','General Education Course'),
-    ('Major Required Course','Major Required Course'),('Major Elective Course','Major Elective Course')
-]
-HoursChoices = [
-    ('1','1'),('2','2'),('3','3'),('4','4')
-]
-ResourcesTypes = [
-    ('Text Book','Text Book'),('Internet Resources','Internet Resources'),
-    ('Research Paper','Reserach Paper')
-]
-EvaluationTypes = [
-    ('Assignments','Assignments'),('Quizzes','Quizzes'),('Attendance','Attendance'),
-    ('Midterm Exam','Midterm Exam'),('Final Exam','Final Exam'),('Projects','Projects')
-]
+
 class Curriculum(models.Model):
 
     CurriculumID = models.AutoField(primary_key=True,max_length=10)
     CurriculumName = models.CharField(max_length=50)
     FacultyName = models.CharField(max_length=50,choices=FacultyNameChoices)
-    CreateDate = models.DateTimeField('Created on',default=timezone.now)
+    CreateDate = models.DateTimeField('Created on',default=timezone.now)  
     def __str__(self):
         return self.CurriculumName
+    
 
 class CourseOutline(models.Model):
     CourseOutlineID =  models.AutoField(primary_key = True, max_length = 10)
