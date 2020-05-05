@@ -7,6 +7,7 @@ from django.views import generic
 from django.views.generic.edit import *
 from .forms import *
 from datetime import datetime
+from django.urls import reverse_lazy
 
 # Create your views here.
 
@@ -43,3 +44,14 @@ def CurriculumDelete(request,curriculum_id):
         obj.delete()
         return HttpResponseRedirect('indexmenu')
     return render(request,'curriculum_Detail.html')
+
+class CurriculumUpdate(UpdateView):
+    model = Curriculum
+    form_class = CreateCurriculumForm
+    template_name = 'Courseoutline/curriculum_Detail.html'
+
+    def get_object(self):
+        CurriculumID = self.kwargs.get("id")
+        return get_object_or_404(Curriculum, pk=CurriculumID)
+    def get_success_url(self):
+        return reverse_lazy('indexmenu')

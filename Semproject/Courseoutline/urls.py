@@ -7,6 +7,6 @@ urlpatterns = [
      path('create/curriculum/',views.CurriculumCreate,name='curriculumcreate'),
      path('<int:pk>/view/',views.CurriculumView.as_view(),name='curriculumview'),
      path('<int:curriculum_id>/delete/',views.CurriculumDelete,name='curriculumdelete'),
-   #  path('<int:pk>/update',views.Update,name='update'),
+     path('<int:id>/update/',views.CurriculumUpdate.as_view(),name='update'),
 
 ]
