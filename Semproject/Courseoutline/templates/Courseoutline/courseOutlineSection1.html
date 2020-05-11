@@ -3,7 +3,7 @@
 
 { % block content % }
     <h1>Course Outline ection 1</h1>
-    <form action = "{% url 'Courseoutline:/.../' %}" method="POST"> 
+    <form action = "" method="POST"> 
         {% csrf_token %}
            {{outlineForm1}}
              <button type="submit" class="btn btn-primary mb-2" >Next</button>

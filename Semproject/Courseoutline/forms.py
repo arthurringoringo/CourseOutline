@@ -13,12 +13,13 @@ class CreateCurriculumForm(forms.ModelForm):
         fields = 'CurriculumName', 'FacultyName'
 
 class CreateCourseOutlineForm(forms.ModelForm):
-    CourseOutlineID = forms.CharField(widget=forms.TextInput(attrs={'class':'form-control'}))
-    CourseName = forms.CharField(widget=forms.TextInput(attrs={'class':'form-control'}))
-    CourseCode = forms.CharField(widget=forms.TextInput(attrs={'class':'form-control'}))
+    CourseName = forms.CharField(widget=forms.TextInput(attrs={'class':'form-control'}),label='Course Name')
+    CourseCode = forms.CharField(widget=forms.TextInput(attrs={'class':'form-control'}),label='Course Code:')
+    FacultyName = forms.ChoiceField(widget=forms.Select(attrs={'class':'form-control'}),label='Faculty Name:',choices = FacultyNameChoices)
+    CourseCurriculumID = forms.ModelChoiceField(widget=forms.Select(attrs={'class':'form-control'}),label='Curriculum Name:',queryset=Curriculum.objects.all())
     class Meta:
         model = CourseOutline
-        fields = 'CourseOutlineID', 'CourseName', 'CourseCode'
+        fields = 'CourseName', 'CourseCode','FacultyName','CourseCurriculumID'
 
 class CreateCourseOutlineForm1(forms.ModelForm):
     SectionID = forms.CharField(widget=forms.TextInput(attrs={'class':'form-control'}))
