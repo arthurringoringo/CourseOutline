@@ -1,0 +1,11 @@
+<!-- Course Outline Section 1 -->
+{% extends "generic_index.html" %}
+
+{% block content %}
+    <h1>Course Outline ection 1</h1>
+    <form action = "" method="POST"> 
+        {% csrf_token %}
+           {{outlineForm1}}
+             <button type="submit" class="btn btn-primary mb-2" >Next</button>
+    </form>
+{% endblock %}

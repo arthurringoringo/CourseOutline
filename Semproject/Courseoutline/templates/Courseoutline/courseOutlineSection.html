@@ -1,0 +1,30 @@
+<!-- Curriculum Section -->
+{% extends "Courseoutline/generic_index.html" %}
+
+{% block content %}
+
+    <div>
+    {% if request.get_full_path == "/courseoutline/create/courseoutline/"%}    
+        <form action = "{% url 'courseoutlinecreate' %}" method="POST"> 
+            {% csrf_token %}
+            {{courseoutlineForm}}
+                <button type="submit" class="btn btn-primary mb-2" >Next</button>
+        </form>
+    {% else %}
+    <form method="POST"> 
+        {% csrf_token %}
+          {{form.as_p}}
+          <input type="submit" value="Update">
+    </form>
+          
+    <form action = "{% url 'courseoutlinedelete' courseoutline.CourseOutlineID %}" method="POST">
+            {% csrf_token %}
+            <button type="submit" class="btn btn-danger">Delete</button>
+    </form>
+            
+
+
+    {% endif %} 
+    </div> 
+{% endblock %}
+
