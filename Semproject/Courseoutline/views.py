@@ -65,6 +65,73 @@ def CourseoutlineCreate(request,template_name='courseoutline/courseOutlineSectio
     context = {'courseoutlineForm': courseoutlineForm,'title':'Course Outline'}
     return render(request,'Courseoutline/courseOutlineSection.html',context)
 
+# Section Forms within 1 html page
+def CourseoutlineCreateSection1(request,template_name='courseoutline/courseOutlineSection1.html'):
+    courseoutlineForm1 = CreateCourseOutlineForm1()
+
+    if request.method == 'POST':
+        courseoutlineForm1 = CreateCourseOutlineForm1(request.POST)
+        if courseoutlineForm1.is_valid():
+            courseoutlineForm1.save()
+        return redirect('indexmenu')
+    context = {'courseoutlineForm1': courseoutlineForm1,'title':'Course Outline'}
+    return render(request,'Courseoutline/courseOutlineSection1.html',context)
+
+def CourseoutlineCreateSection2(request,template_name='courseoutline/courseOutlineSection1.html'):
+    courseoutlineForm2 = CreateCourseOutlineForm2()
+
+    if request.method == 'POST':
+        courseoutlineForm2 = CreateCourseOutlineForm2(request.POST)
+        if courseoutlineForm2.is_valid():
+            courseoutlineForm2.save()
+        return redirect('indexmenu')
+    context = {'courseoutlineForm2': courseoutlineForm2,'title':'Course Outline'}
+    return render(request,'Courseoutline/courseOutlineSection1.html',context)
+
+def CourseoutlineCreateSection3(request,template_name='courseoutline/courseOutlineSection1.html'):
+    courseoutlineForm3 = CreateCourseOutlineForm3()
+
+    if request.method == 'POST':
+        courseoutlineForm3 = CreateCourseOutlineForm3(request.POST)
+        if courseoutlineForm3.is_valid():
+            courseoutlineForm3.save()
+        return redirect('indexmenu')
+    context = {'courseoutlineForm3': courseoutlineForm3,'title':'Course Outline'}
+    return render(request,'Courseoutline/courseOutlineSection1.html',context)
+
+def CourseoutlineCreateSection4(request,template_name='courseoutline/courseOutlineSection1.html'):
+    courseoutlineForm4 = CreateCourseOutlineForm4()
+
+    if request.method == 'POST':
+        courseoutlineForm4 = CreateCourseOutlineForm4(request.POST)
+        if courseoutlineForm4.is_valid():
+            courseoutlineForm4.save()
+        return redirect('indexmenu')
+    context = {'courseoutlineForm4': courseoutlineForm4,'title':'Course Outline'}
+    return render(request,'Courseoutline/courseOutlineSection1.html',context)
+
+def CourseoutlineCreateSection5(request,template_name='courseoutline/courseOutlineSection1.html'):
+    courseoutlineForm5 = CreateCourseOutlineForm1()
+
+    if request.method == 'POST':
+        courseoutlineForm5 = CreateCourseOutlineForm5(request.POST)
+        if courseoutlineForm5.is_valid():
+            courseoutlineForm5.save()
+        return redirect('indexmenu')
+    context = {'courseoutlineForm5': courseoutlineForm5,'title':'Course Outline'}
+    return render(request,'Courseoutline/courseOutlineSection1.html',context)
+
+def CourseoutlineCreateSection6(request,template_name='courseoutline/courseOutlineSection1.html'):
+    courseoutlineForm6 = CreateCourseOutlineForm6()
+
+    if request.method == 'POST':
+        courseoutlineForm6 = CreateCourseOutlineForm6(request.POST)
+        if courseoutlineForm6.is_valid():
+            courseoutlineForm6.save()
+        return redirect('indexmenu')
+    context = {'courseoutlineForm6': courseoutlineForm6,'title':'Course Outline'}
+    return render(request,'Courseoutline/courseOutlineSection1.html',context)
+
 def CourseoutlineDelete(request,courseoutline_id):
     obj = get_object_or_404(CourseOutline,pk=courseoutline_id)
     if request.method == "POST":

@@ -1,11 +1,156 @@
-<!-- Course Outline Section 1 -->
+<!-- Course Outline Sections -->
 {% extends "generic_index.html" %}
 
 {% block content %}
-    <h1>Course Outline ection 1</h1>
-    <form action = "" method="POST"> 
-        {% csrf_token %}
-           {{outlineForm1}}
-             <button type="submit" class="btn btn-primary mb-2" >Next</button>
-    </form>
+     
+
+    <ul class="nav nav-tabs">
+        <li class="nav-item">
+            <a class="nav-link active" href="#">Active</a>
+            <div>
+                {% if request.get_full_path == "/courseoutline/create/courseoutline/"%}    
+                <form action = "{% url 'courseoutlinecreate' %}" method="POST"> 
+                        {% csrf_token %}
+                        {{courseoutlineForm1}}
+                            <button type="submit" class="btn btn-primary mb-2" >Next</button>
+                    </form>
+                {% else %}
+                <form method="POST"> 
+                    {% csrf_token %}
+                      {{form.as_p}}
+                      <input type="submit" value="Update">
+                </form>
+                      
+                <form action = "{% url 'courseoutlinedelete' courseoutline.CourseOutlineID %}" method="POST">
+                        {% csrf_token %}
+                        <button type="submit" class="btn btn-danger">Delete</button>
+                </form>
+            
+                {% endif %} 
+            </div>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="#">Link</a>
+            <div>
+                {% if request.get_full_path == "/courseoutline/create/courseoutline/"%}    
+                    <form action = "{% url 'courseoutlinecreate' %}" method="POST"> 
+                        {% csrf_token %}
+                        {{courseoutlineForm2}}
+                            <button type="submit" class="btn btn-primary mb-2" >Next</button>
+                    </form>
+                {% else %}
+                <form method="POST"> 
+                    {% csrf_token %}
+                    {{form.as_p}}
+                    <input type="submit" value="Update">
+                </form>
+                    
+                <form action = "{% url 'courseoutlinedelete' courseoutline.CourseOutlineID %}" method="POST">
+                        {% csrf_token %}
+                        <button type="submit" class="btn btn-danger">Delete</button>
+                </form>
+            
+                {% endif %} 
+            </div>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="#">Link</a>
+            <div>
+                {% if request.get_full_path == "/courseoutline/create/courseoutline/"%}    
+                    <form action = "{% url 'courseoutlinecreate' %}" method="POST"> 
+                        {% csrf_token %}
+                        {{courseoutlineForm3}}
+                            <button type="submit" class="btn btn-primary mb-2" >Next</button>
+                    </form>
+                {% else %}
+                <form method="POST"> 
+                    {% csrf_token %}
+                    {{form.as_p}}
+                    <input type="submit" value="Update">
+                </form>
+                    
+                <form action = "{% url 'courseoutlinedelete' courseoutline.CourseOutlineID %}" method="POST">
+                        {% csrf_token %}
+                        <button type="submit" class="btn btn-danger">Delete</button>
+                </form>
+            
+                {% endif %} 
+            </div>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="#">Disabled</a>
+            <div>
+                {% if request.get_full_path == "/courseoutline/create/courseoutline/"%}    
+                    <form action = "{% url 'courseoutlinecreate' %}" method="POST"> 
+                        {% csrf_token %}
+                        {{courseoutlineForm4}}
+                            <button type="submit" class="btn btn-primary mb-2" >Next</button>
+                    </form>
+                {% else %}
+                <form method="POST"> 
+                    {% csrf_token %}
+                    {{form.as_p}}
+                    <input type="submit" value="Update">
+                </form>
+                    
+                <form action = "{% url 'courseoutlinedelete' courseoutline.CourseOutlineID %}" method="POST">
+                        {% csrf_token %}
+                        <button type="submit" class="btn btn-danger">Delete</button>
+                </form>
+            
+                {% endif %} 
+            </div>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="#">Active</a>
+            <div>
+                {% if request.get_full_path == "/courseoutline/create/courseoutline/"%}    
+                <form action = "{% url 'courseoutlinecreate' %}" method="POST"> 
+                        {% csrf_token %}
+                        {{courseoutlineForm5}}
+                            <button type="submit" class="btn btn-primary mb-2" >Next</button>
+                    </form>
+                {% else %}
+                <form method="POST"> 
+                    {% csrf_token %}
+                      {{form.as_p}}
+                      <input type="submit" value="Update">
+                </form>
+                      
+                <form action = "{% url 'courseoutlinedelete' courseoutline.CourseOutlineID %}" method="POST">
+                        {% csrf_token %}
+                        <button type="submit" class="btn btn-danger">Delete</button>
+                </form>
+            
+                {% endif %} 
+            </div>
+        </li>
+        <li class="nav-item">
+            <a class="nav-link" href="#">Active</a>
+            <div>
+                {% if request.get_full_path == "/courseoutline/create/courseoutline/"%}    
+                <form action = "{% url 'courseoutlinecreate' %}" method="POST"> 
+                        {% csrf_token %}
+                        {{courseoutlineForm6}}
+                            <button type="submit" class="btn btn-primary mb-2" >Next</button>
+                    </form>
+                {% else %}
+                <form method="POST"> 
+                    {% csrf_token %}
+                      {{form.as_p}}
+                      <input type="submit" value="Update">
+                </form>
+                      
+                <form action = "{% url 'courseoutlinedelete' courseoutline.CourseOutlineID %}" method="POST">
+                        {% csrf_token %}
+                        <button type="submit" class="btn btn-danger">Delete</button>
+                </form>
+            
+                {% endif %} 
+            </div>
+        </li>
+      </ul>
+
+
+
 {% endblock %}

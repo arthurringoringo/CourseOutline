@@ -1,8 +1,7 @@
-<!-- Curriculum Section -->
+<!-- Course Outline Section -->
 {% extends "Courseoutline/generic_index.html" %}
 
 {% block content %}
-
     <div>
     {% if request.get_full_path == "/courseoutline/create/courseoutline/"%}    
         <form action = "{% url 'courseoutlinecreate' %}" method="POST"> 
@@ -22,8 +21,6 @@
             <button type="submit" class="btn btn-danger">Delete</button>
     </form>
             
-
-
     {% endif %} 
     </div> 
 {% endblock %}
