@@ -10,6 +10,30 @@
             {{curriculumForm}}
                 <button type="submit" class="btn btn-primary mb-2" >Next</button>
         </form>
+        <table class="table">
+        <thead>
+            <tr>
+            <th scope="col">#</th>
+            <th scope="col">Curriculum Name</th>
+            <th scope="col">Faculty Name</th>
+            <th scope="col">Create Date</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% if currentcurriculum %}
+            {% for curriculum in currentcurriculum %}
+                <tr>
+                    <th scope="row">{{forloop.counter}}</th>
+                    <td><a href =" {% url 'update' curriculum.CurriculumID %}"> {{curriculum.CurriculumName}}</a></td>
+                    <td>{{curriculum.FacultyName}}</td>
+                    <td>{{curriculum.CreateDate}}</td>
+                </tr>
+            </a>
+            {% endfor %}
+        {% endif %}  
+
+
+
     {% else %}
     <form method="POST"> 
         {% csrf_token %}
@@ -25,6 +49,6 @@
 
 
     {% endif %} 
-    </div> 
 {% endblock %}
+
 

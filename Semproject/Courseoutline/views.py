@@ -11,7 +11,7 @@ from django.urls import reverse_lazy
 
 # Create your views here.
 
-def IndexMenu(request,tempalate_name='Courseoutline/index.html'):
+def IndexMenu(request,template_name='Courseoutline/index.html'):
     return render(request,'Courseoutline/index.html')
 
 #### CURICULUM
@@ -19,13 +19,13 @@ def IndexMenu(request,tempalate_name='Courseoutline/index.html'):
 
 def CurriculumCreate(request,template_name='Courseoutline/curriculum_Detail.html'):
     curriculumForm = CreateCurriculumForm()
-
+    currentcurriculum = Curriculum.objects.all()
     if request.method == 'POST':
         curriculumForm = CreateCurriculumForm(request.POST)
         if curriculumForm.is_valid():
             curriculumForm.save()
         return redirect('indexmenu')
-    context = {'curriculumForm': curriculumForm,'title':'Curriculum'}
+    context = {'curriculumForm': curriculumForm,'title':'Curriculum','currentcurriculum':currentcurriculum}
     return render(request,'Courseoutline/curriculum_Detail.html',context)
 
 #Waiting for template
@@ -60,21 +60,48 @@ def CourseoutlineCreate(request,template_name='courseoutline/courseOutlineSectio
     if request.method == 'POST':
         courseoutlineForm = CreateCourseOutlineForm(request.POST)
         if courseoutlineForm.is_valid():
-            courseoutlineForm.save()
-        return redirect('indexmenu')
+            new_courseoutline=courseoutlineForm.save()
+        return HttpResponseRedirect(reverse(Courseoutlinesectionscreate, args=(new_courseoutline.pk,)))
     context = {'courseoutlineForm': courseoutlineForm,'title':'Course Outline'}
     return render(request,'Courseoutline/courseOutlineSection.html',context)
 
-# Section Forms within 1 html page
-def CourseoutlineCreateSection1(request,template_name='courseoutline/courseOutlineSection1.html'):
-    courseoutlineForm1 = CreateCourseOutlineForm1()
+def CourseoutlineDelete(request,courseoutline_id):
+    obj = get_object_or_404(CourseOutline,pk=courseoutline_id)
+    if request.method == "POST":
+        obj.delete()
+        return redirect('indexmenu')
+    return render(request,'courseOutlineSection.html')
 
+class CourseoutlineUpdate(UpdateView):
+    model = CourseOutline
+    form_class = CreateCourseOutlineForm
+    template_name = 'Courseoutline/courseOutlineSection.html'
+
+    def get_object(self):
+        CourseOutlineID = self.kwargs.get("id")
+        return get_object_or_404(CourseOutline, pk=CourseOutlineID)
+    def get_success_url(self):
+        return reverse_lazy('indexmenu')
+
+
+# Section Forms within 1 html page
+def Courseoutlinesectionscreate(request,courseoutline_id,template_name='Courseoutline/courseOutlineSection1.html'):
+    currentcourseoutlineobj = get_object_or_404(CourseOutline,pk = courseoutline_id)
+    courseoutlineForm1 = CreateCourseOutlineForm1()
+    courseoutlineForm2 = CreateCourseOutlineForm2()
+    courseoutlineForm3 = CreateCourseOutlineForm3()
+    courseoutlineForm4 = CreateCourseOutlineForm4()
+    
     if request.method == 'POST':
         courseoutlineForm1 = CreateCourseOutlineForm1(request.POST)
         if courseoutlineForm1.is_valid():
-            courseoutlineForm1.save()
+            tempcourseoutline = courseoutlineForm1.save(commit=False)
+            tempcourseoutline.CourseOutlineID =currentcourseoutlineobj
+            tempcourseoutline.save()
         return redirect('indexmenu')
-    context = {'courseoutlineForm1': courseoutlineForm1,'title':'Course Outline'}
+    context = {'courseoutlineForm1': courseoutlineForm1,'courseoutlineForm2': courseoutlineForm2,
+    'courseoutlineForm3': courseoutlineForm3,'courseoutlineForm4': courseoutlineForm4,
+    'title':'Course Outline','Course':currentcourseoutlineobj.CourseName,'CourseID':currentcourseoutlineobj.CourseCode}
     return render(request,'Courseoutline/courseOutlineSection1.html',context)
 
 def CourseoutlineCreateSection2(request,template_name='courseoutline/courseOutlineSection1.html'):
@@ -89,7 +116,7 @@ def CourseoutlineCreateSection2(request,template_name='courseoutline/courseOutli
     return render(request,'Courseoutline/courseOutlineSection1.html',context)
 
 def CourseoutlineCreateSection3(request,template_name='courseoutline/courseOutlineSection1.html'):
-    courseoutlineForm3 = CreateCourseOutlineForm3()
+    courseoutlineForm2 = CreateCourseOutlineForm2()
 
     if request.method == 'POST':
         courseoutlineForm3 = CreateCourseOutlineForm3(request.POST)
@@ -132,21 +159,4 @@ def CourseoutlineCreateSection6(request,template_name='courseoutline/courseOutli
     context = {'courseoutlineForm6': courseoutlineForm6,'title':'Course Outline'}
     return render(request,'Courseoutline/courseOutlineSection1.html',context)
 
-def CourseoutlineDelete(request,courseoutline_id):
-    obj = get_object_or_404(CourseOutline,pk=courseoutline_id)
-    if request.method == "POST":
-        obj.delete()
-        return redirect('indexmenu')
-    return render(request,'courseOutlineSection.html')
-
-class CourseoutlineUpdate(UpdateView):
-    model = CourseOutline
-    form_class = CreateCourseOutlineForm
-    template_name = 'Courseoutline/courseOutlineSection.html'
-
-    def get_object(self):
-        CourseOutlineID = self.kwargs.get("id")
-        return get_object_or_404(CourseOutline, pk=CourseOutlineID)
-    def get_success_url(self):
-        return reverse_lazy('indexmenu')
 

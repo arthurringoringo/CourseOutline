@@ -1,155 +1,26 @@
 <!-- Course Outline Sections -->
-{% extends "generic_index.html" %}
+{% extends "Courseoutline/generic_index.html" %}
 
 {% block content %}
      
 
-    <ul class="nav nav-tabs">
-        <li class="nav-item">
-            <a class="nav-link active" href="#">Active</a>
-            <div>
-                {% if request.get_full_path == "/courseoutline/create/courseoutline/"%}    
-                <form action = "{% url 'courseoutlinecreate' %}" method="POST"> 
-                        {% csrf_token %}
-                        {{courseoutlineForm1}}
-                            <button type="submit" class="btn btn-primary mb-2" >Next</button>
-                    </form>
-                {% else %}
-                <form method="POST"> 
-                    {% csrf_token %}
-                      {{form.as_p}}
-                      <input type="submit" value="Update">
-                </form>
-                      
-                <form action = "{% url 'courseoutlinedelete' courseoutline.CourseOutlineID %}" method="POST">
-                        {% csrf_token %}
-                        <button type="submit" class="btn btn-danger">Delete</button>
-                </form>
-            
-                {% endif %} 
-            </div>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="#">Link</a>
-            <div>
-                {% if request.get_full_path == "/courseoutline/create/courseoutline/"%}    
-                    <form action = "{% url 'courseoutlinecreate' %}" method="POST"> 
-                        {% csrf_token %}
-                        {{courseoutlineForm2}}
-                            <button type="submit" class="btn btn-primary mb-2" >Next</button>
-                    </form>
-                {% else %}
-                <form method="POST"> 
-                    {% csrf_token %}
-                    {{form.as_p}}
-                    <input type="submit" value="Update">
-                </form>
-                    
-                <form action = "{% url 'courseoutlinedelete' courseoutline.CourseOutlineID %}" method="POST">
-                        {% csrf_token %}
-                        <button type="submit" class="btn btn-danger">Delete</button>
-                </form>
-            
-                {% endif %} 
-            </div>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="#">Link</a>
-            <div>
-                {% if request.get_full_path == "/courseoutline/create/courseoutline/"%}    
-                    <form action = "{% url 'courseoutlinecreate' %}" method="POST"> 
-                        {% csrf_token %}
-                        {{courseoutlineForm3}}
-                            <button type="submit" class="btn btn-primary mb-2" >Next</button>
-                    </form>
-                {% else %}
-                <form method="POST"> 
-                    {% csrf_token %}
-                    {{form.as_p}}
-                    <input type="submit" value="Update">
-                </form>
-                    
-                <form action = "{% url 'courseoutlinedelete' courseoutline.CourseOutlineID %}" method="POST">
-                        {% csrf_token %}
-                        <button type="submit" class="btn btn-danger">Delete</button>
-                </form>
-            
-                {% endif %} 
-            </div>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="#">Disabled</a>
-            <div>
-                {% if request.get_full_path == "/courseoutline/create/courseoutline/"%}    
-                    <form action = "{% url 'courseoutlinecreate' %}" method="POST"> 
-                        {% csrf_token %}
-                        {{courseoutlineForm4}}
-                            <button type="submit" class="btn btn-primary mb-2" >Next</button>
-                    </form>
-                {% else %}
-                <form method="POST"> 
-                    {% csrf_token %}
-                    {{form.as_p}}
-                    <input type="submit" value="Update">
-                </form>
-                    
-                <form action = "{% url 'courseoutlinedelete' courseoutline.CourseOutlineID %}" method="POST">
-                        {% csrf_token %}
-                        <button type="submit" class="btn btn-danger">Delete</button>
-                </form>
-            
-                {% endif %} 
-            </div>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="#">Active</a>
-            <div>
-                {% if request.get_full_path == "/courseoutline/create/courseoutline/"%}    
-                <form action = "{% url 'courseoutlinecreate' %}" method="POST"> 
-                        {% csrf_token %}
-                        {{courseoutlineForm5}}
-                            <button type="submit" class="btn btn-primary mb-2" >Next</button>
-                    </form>
-                {% else %}
-                <form method="POST"> 
-                    {% csrf_token %}
-                      {{form.as_p}}
-                      <input type="submit" value="Update">
-                </form>
-                      
-                <form action = "{% url 'courseoutlinedelete' courseoutline.CourseOutlineID %}" method="POST">
-                        {% csrf_token %}
-                        <button type="submit" class="btn btn-danger">Delete</button>
-                </form>
-            
-                {% endif %} 
-            </div>
-        </li>
-        <li class="nav-item">
-            <a class="nav-link" href="#">Active</a>
-            <div>
-                {% if request.get_full_path == "/courseoutline/create/courseoutline/"%}    
-                <form action = "{% url 'courseoutlinecreate' %}" method="POST"> 
-                        {% csrf_token %}
-                        {{courseoutlineForm6}}
-                            <button type="submit" class="btn btn-primary mb-2" >Next</button>
-                    </form>
-                {% else %}
-                <form method="POST"> 
-                    {% csrf_token %}
-                      {{form.as_p}}
-                      <input type="submit" value="Update">
-                </form>
-                      
-                <form action = "{% url 'courseoutlinedelete' courseoutline.CourseOutlineID %}" method="POST">
-                        {% csrf_token %}
-                        <button type="submit" class="btn btn-danger">Delete</button>
-                </form>
-            
-                {% endif %} 
-            </div>
-        </li>
-      </ul>
+    <ul class="nav nav-tabs" id="myTab" role="tablist">
+        <li class="nav-item"  role="presentation"><a class="nav-link active " id="home-tab" data-toggle="tab" href="#section1" role="tab" aria-controls="home" aria-selected="true">Section 1</a>
+        <li class="nav-item"  role="presentation"><a class="nav-link " id="home-tab" data-toggle="tab" href="#section2" role="tab" aria-controls="home" aria-selected="true">Section 2</a>
+        <li class="nav-item"  role="presentation"><a class="nav-link " id="home-tab" data-toggle="tab" href="#section3" role="tab" aria-controls="home" aria-selected="true">Section 3</a>
+        <li class="nav-item"  role="presentation"><a class="nav-link " id="home-tab" data-toggle="tab" href="#section4" role="tab" aria-controls="home" aria-selected="true">Section 4</a>  
+    </ul>
+    <form action = "" method="POST"> 
+    <div class="tab-content" id="myTabContent">
+       <div class="tab-pane fade show active" id="section1" role="tabpanel" aria-labelledby="home-tab">{% csrf_token %}{{courseoutlineForm1}}</div>
+        <div class="tab-pane fade" id="section2" role="tabpanel" aria-labelledby="home-tab">{{courseoutlineForm2}}</div>
+       <div class="tab-pane fade" id="section3" role="tabpanel" aria-labelledby="home-tab">{{courseoutlineForm3}}</div>
+       <div class="tab-pane fade" id="section4" role="tabpanel" aria-labelledby="home-tab">{{courseoutlineForm4}}</div>
+    </form>
+    </div>
+    </form>
+
+
 
 
 

@@ -32,7 +32,7 @@ class CourseOutlineSection1(models.Model):
     CourseOutlineID = models.ForeignKey(CourseOutline,on_delete=models.CASCADE)
     SectionName = models.CharField(max_length=55,default='Course Identification and General Information')
     DateCreated = models.DateTimeField(default=timezone.now)
-    NumberOfCredit = models.CharField(max_length=10)
+    NumberOfCredit = models.CharField(max_length=10,choices= Credits)
     CategoryofCourse = models.CharField(max_length=55,choices=CourseCategory)
     Prerequisite = models.CharField(max_length=100)
     Corequisite = models.CharField(max_length=100)

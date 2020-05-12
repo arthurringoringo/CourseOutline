@@ -16,7 +16,7 @@
     <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
-
+ 
     <!-- Custom fonts -->
     <link href="https://fonts.googleapis.com/css?family=Lato:300,400,700,300italic,400italic,700italic" rel="stylesheet" type="text/css">
 
@@ -67,20 +67,15 @@
 {% endblock %}
 <!-- End of Navigation -->
 
-<hr>
 
 <!-- Content Section -->
 <section class="testimonials text-center bg-light">
     <div class="container">
         <h2 class="mb-5">{{title}}</h2>
-            <div class="row">
+        <h4 class="mb-5">{{Course}}/{{CourseID}}-Course Outline</h4>
+            <div class="container-fluid">
                 {% block content %}{% endblock %}
             </div>
      </div>
 </section>
 <!-- End of Content Section -->
-
-
-
-</body>
-</html>

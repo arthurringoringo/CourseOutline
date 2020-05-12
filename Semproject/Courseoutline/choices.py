@@ -9,6 +9,9 @@ CourseCategory = [
 HoursChoices = [
     ('1','1'),('2','2'),('3','3'),('4','4')
 ]
+Credits = [
+    ('1','1'),('2','2'),('3','3'),('4','4')
+]
 ResourcesTypes = [
     ('Text Book','Text Book'),('Internet Resources','Internet Resources'),
     ('Research Paper','Reserach Paper')
