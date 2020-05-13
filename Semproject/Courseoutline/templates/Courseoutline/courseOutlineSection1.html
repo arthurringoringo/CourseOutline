@@ -8,14 +8,12 @@
         <li class="nav-item"  role="presentation"><a class="nav-link active " id="home-tab" data-toggle="tab" href="#section1" role="tab" aria-controls="home" aria-selected="true">Section 1</a>
         <li class="nav-item"  role="presentation"><a class="nav-link " id="home-tab" data-toggle="tab" href="#section2" role="tab" aria-controls="home" aria-selected="true">Section 2</a>
         <li class="nav-item"  role="presentation"><a class="nav-link " id="home-tab" data-toggle="tab" href="#section3" role="tab" aria-controls="home" aria-selected="true">Section 3</a>
-        <li class="nav-item"  role="presentation"><a class="nav-link " id="home-tab" data-toggle="tab" href="#section4" role="tab" aria-controls="home" aria-selected="true">Section 4</a>  
     </ul>
-    <form action = "" method="POST"> 
+    <form action = "{% url 'courseoutlinesectioncreate' currentcourseoutlineobj.CourseOutlineID%}" method="POST"> 
     <div class="tab-content" id="myTabContent">
        <div class="tab-pane fade show active" id="section1" role="tabpanel" aria-labelledby="home-tab">{% csrf_token %}{{courseoutlineForm1}}</div>
         <div class="tab-pane fade" id="section2" role="tabpanel" aria-labelledby="home-tab">{{courseoutlineForm2}}</div>
-       <div class="tab-pane fade" id="section3" role="tabpanel" aria-labelledby="home-tab">{{courseoutlineForm3}}</div>
-       <div class="tab-pane fade" id="section4" role="tabpanel" aria-labelledby="home-tab">{{courseoutlineForm4}}</div>
+       <div class="tab-pane fade" id="section3" role="tabpanel" aria-labelledby="home-tab">{{courseoutlineForm3}}<button type="submit" class="btn btn-primary mb-2" >Next</button></div>
     </form>
     </div>
     </form>

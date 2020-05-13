@@ -90,18 +90,27 @@ def Courseoutlinesectionscreate(request,courseoutline_id,template_name='Courseou
     courseoutlineForm1 = CreateCourseOutlineForm1()
     courseoutlineForm2 = CreateCourseOutlineForm2()
     courseoutlineForm3 = CreateCourseOutlineForm3()
-    courseoutlineForm4 = CreateCourseOutlineForm4()
-    
+
     if request.method == 'POST':
         courseoutlineForm1 = CreateCourseOutlineForm1(request.POST)
+        courseoutlineForm2 = CreateCourseOutlineForm2(request.POST)
+        courseoutlineForm3 = CreateCourseOutlineForm3(request.POST)
         if courseoutlineForm1.is_valid():
             tempcourseoutline = courseoutlineForm1.save(commit=False)
             tempcourseoutline.CourseOutlineID =currentcourseoutlineobj
             tempcourseoutline.save()
-        return redirect('indexmenu')
-    context = {'courseoutlineForm1': courseoutlineForm1,'courseoutlineForm2': courseoutlineForm2,
-    'courseoutlineForm3': courseoutlineForm3,'courseoutlineForm4': courseoutlineForm4,
-    'title':'Course Outline','Course':currentcourseoutlineobj.CourseName,'CourseID':currentcourseoutlineobj.CourseCode}
+            if courseoutlineForm2.is_valid():
+                tempcourseoutline = courseoutlineForm2.save(commit=False)
+                tempcourseoutline.CourseOutlineID = currentcourseoutlineobj
+                tempcourseoutline.save()
+                if courseoutlineForm3.is_valid():
+                    tempcourseoutline = courseoutlineForm3.save(commit=False)
+                    tempcourseoutline.CourseOutlineID = currentcourseoutlineobj
+                    tempcourseoutline.save()
+        
+                    return redirect('indexmenu')
+    context = {'courseoutlineForm1': courseoutlineForm1,'courseoutlineForm2': courseoutlineForm2,'courseoutlineForm3': courseoutlineForm3,
+    'currentcourseoutlineobj':currentcourseoutlineobj,'title':'Course Outline','Course':currentcourseoutlineobj.CourseName,'CourseID':currentcourseoutlineobj.CourseCode}
     return render(request,'Courseoutline/courseOutlineSection1.html',context)
 
 def CourseoutlineCreateSection2(request,template_name='courseoutline/courseOutlineSection1.html'):

@@ -7,7 +7,7 @@ CourseCategory = [
     ('Major Required Course','Major Required Course'),('Major Elective Course','Major Elective Course')
 ]
 HoursChoices = [
-    ('1','1'),('2','2'),('3','3'),('4','4')
+    (1,'1'),(2,'2'),(3,'3'),(4,'4')
 ]
 Credits = [
     ('1','1'),('2','2'),('3','3'),('4','4')

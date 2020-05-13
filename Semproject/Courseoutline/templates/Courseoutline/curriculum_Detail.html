@@ -5,7 +5,7 @@
 
     <div>
     {% if request.get_full_path == "/courseoutline/create/curriculum/"%}    
-        <form action = "{% url 'curriculumcreate' %}" method="POST"> 
+        <form action = "{% url 'curriculumcreate' courseoutline.CourseOutlineID %}" method="POST"> 
             {% csrf_token %}
             {{curriculumForm}}
                 <button type="submit" class="btn btn-primary mb-2" >Next</button>
