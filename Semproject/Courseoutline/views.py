@@ -56,13 +56,14 @@ class CurriculumUpdate(UpdateView):
 #### COURSEOUTLINE
 def CourseoutlineCreate(request,template_name='courseoutline/courseOutlineSection.html'):
     courseoutlineForm = CreateCourseOutlineForm()
+    courseoutlines = CourseOutline.objects.all()
 
     if request.method == 'POST':
         courseoutlineForm = CreateCourseOutlineForm(request.POST)
         if courseoutlineForm.is_valid():
             new_courseoutline=courseoutlineForm.save()
         return HttpResponseRedirect(reverse(Courseoutlinesectionscreate, args=(new_courseoutline.pk,)))
-    context = {'courseoutlineForm': courseoutlineForm,'title':'Course Outline'}
+    context = {'courseoutlineForm': courseoutlineForm,'title':'Course Outline','courseoutlines':courseoutlines}
     return render(request,'Courseoutline/courseOutlineSection.html',context)
 
 def CourseoutlineDelete(request,courseoutline_id):

@@ -9,18 +9,41 @@
             {{courseoutlineForm}}
                 <button type="submit" class="btn btn-primary mb-2" >Next</button>
         </form>
+    <table class="table">
+        <thead>
+            <tr>
+            <th scope="col">#</th>
+            <th scope="col">Course Name</th>
+            <th scope="col">Course Code</th>
+            <th scope="col">Create Date</th>
+            <th scope="col"></th>
+            </tr>
+        </thead>
+        <tbody>
+        {% if courseoutlines %}
+            {% for courseoutline in courseoutlines %}
+                <tr>
+                    <th scope="row">{{forloop.counter}}</th>
+                    <td><a href =" {% url 'courseoutlineupdate' courseoutline.CourseOutlineID %}"> {{courseoutline.CourseName}}</a></td>
+                    <td>{{courseoutline.FacultyName}}</td>
+                    <td>{{courseoutline.CreateDate}}</td>
+                    <td>    <form action = "{% url 'courseoutlinedelete' courseoutline.CourseOutlineID %}" method="POST">
+                                {% csrf_token %}
+                                <button type="submit" class="btn btn-danger">Delete</button>
+                            </form>
+                    </td>
+                </tr>
+            </a>
+            {% endfor %}
+        {% endif %}  
+
     {% else %}
+     <h4 class="mb-5">{{courseoutline.CourseName}}|{{courseoutline.CourseCode}}-Course Outline</h4>
     <form method="POST"> 
         {% csrf_token %}
           {{form.as_p}}
-          <input type="submit" value="Update">
-    </form>
-          
-    <form action = "{% url 'courseoutlinedelete' courseoutline.CourseOutlineID %}" method="POST">
-            {% csrf_token %}
-            <button type="submit" class="btn btn-danger">Delete</button>
-    </form>
-            
+          <button type="submit" class="btn btn-info" value="Update">Update</button>
+    </form> 
     {% endif %} 
     </div> 
 {% endblock %}
