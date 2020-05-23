@@ -44,7 +44,11 @@
           {{form.as_p}}
           <button type="submit" class="btn btn-info" value="Update">Update</button>
     </form> 
-    {% endif %} 
+            <div class="container mt-3">
+            <a name="gotosection" id="gotosection" class="btn btn-primary" href="{% url 'courseoutlinesectionlist' courseoutline.CourseOutlineID %}" role="button">Go to sections</a>
+        </div>
     </div> 
+    {% endif %} 
+
 {% endblock %}
 

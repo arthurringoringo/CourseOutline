@@ -1,0 +1,18 @@
+<!-- Course Outline Sections -->
+{% extends "Courseoutline/generic_index.html" %}
+
+{% block content %}
+     
+ <h4 class="mb-5">{{Course}}|{{CourseID}}-Course Outline</h4>
+    {% if courseoutline %}
+        <h1>{{courseoutline.facultyname}}</h1>
+    {% with courseoutline.CourseOutlineSection1_set.all as sect1 %}
+            <h1>{{sect1.SectionName}}</h1>
+    {% endwith %}
+    {% else %}
+      <h1>no</h1>
+    {% endif %}   
+      
+
+
+{% endblock %}

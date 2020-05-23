@@ -3,7 +3,7 @@ from django.shortcuts import get_object_or_404, redirect, render
 from django.http.response import HttpResponse, HttpResponseRedirect
 from .models import *
 from django.urls import reverse
-from django.views import generic
+from django.views.generic import *
 from django.views.generic.edit import *
 from .forms import *
 from datetime import datetime
@@ -114,59 +114,18 @@ def Courseoutlinesectionscreate(request,courseoutline_id,template_name='Courseou
     'currentcourseoutlineobj':currentcourseoutlineobj,'title':'Course Outline','Course':currentcourseoutlineobj.CourseName,'CourseID':currentcourseoutlineobj.CourseCode}
     return render(request,'Courseoutline/courseOutlineSection1.html',context)
 
-def CourseoutlineCreateSection2(request,template_name='courseoutline/courseOutlineSection1.html'):
-    courseoutlineForm2 = CreateCourseOutlineForm2()
+def Courseoutlinesectionslist(request,courseoutline_id,tempalte_name = 'Courseoutline/availablesections.html'):
+    courseoutline = CourseOutline.objects.filter(pk=courseoutline_id)
 
-    if request.method == 'POST':
-        courseoutlineForm2 = CreateCourseOutlineForm2(request.POST)
-        if courseoutlineForm2.is_valid():
-            courseoutlineForm2.save()
-        return redirect('indexmenu')
-    context = {'courseoutlineForm2': courseoutlineForm2,'title':'Course Outline'}
-    return render(request,'Courseoutline/courseOutlineSection1.html',context)
+    context = {'courseoutline' : courseoutline,'Course':courseoutline.CourseName,'CourseID':courseoutline.CourseCode}
+    return render(request,'Courseoutline/availablesections.html',context)
 
-def CourseoutlineCreateSection3(request,template_name='courseoutline/courseOutlineSection1.html'):
-    courseoutlineForm2 = CreateCourseOutlineForm2()
+class CourseoutlineSection123Update(UpdateView):
+    form_class = CreateCourseOutlineForm
+    template_name = 'Courseoutline/courseOutlineSection.html'
 
-    if request.method == 'POST':
-        courseoutlineForm3 = CreateCourseOutlineForm3(request.POST)
-        if courseoutlineForm3.is_valid():
-            courseoutlineForm3.save()
-        return redirect('indexmenu')
-    context = {'courseoutlineForm3': courseoutlineForm3,'title':'Course Outline'}
-    return render(request,'Courseoutline/courseOutlineSection1.html',context)
-
-def CourseoutlineCreateSection4(request,template_name='courseoutline/courseOutlineSection1.html'):
-    courseoutlineForm4 = CreateCourseOutlineForm4()
-
-    if request.method == 'POST':
-        courseoutlineForm4 = CreateCourseOutlineForm4(request.POST)
-        if courseoutlineForm4.is_valid():
-            courseoutlineForm4.save()
-        return redirect('indexmenu')
-    context = {'courseoutlineForm4': courseoutlineForm4,'title':'Course Outline'}
-    return render(request,'Courseoutline/courseOutlineSection1.html',context)
-
-def CourseoutlineCreateSection5(request,template_name='courseoutline/courseOutlineSection1.html'):
-    courseoutlineForm5 = CreateCourseOutlineForm1()
-
-    if request.method == 'POST':
-        courseoutlineForm5 = CreateCourseOutlineForm5(request.POST)
-        if courseoutlineForm5.is_valid():
-            courseoutlineForm5.save()
-        return redirect('indexmenu')
-    context = {'courseoutlineForm5': courseoutlineForm5,'title':'Course Outline'}
-    return render(request,'Courseoutline/courseOutlineSection1.html',context)
-
-def CourseoutlineCreateSection6(request,template_name='courseoutline/courseOutlineSection1.html'):
-    courseoutlineForm6 = CreateCourseOutlineForm6()
-
-    if request.method == 'POST':
-        courseoutlineForm6 = CreateCourseOutlineForm6(request.POST)
-        if courseoutlineForm6.is_valid():
-            courseoutlineForm6.save()
-        return redirect('indexmenu')
-    context = {'courseoutlineForm6': courseoutlineForm6,'title':'Course Outline'}
-    return render(request,'Courseoutline/courseOutlineSection1.html',context)
-
-
+    def get_object(self):
+        CourseOutlineID = self.kwargs.get("id")
+        return get_object_or_404(CourseOutline, pk=CourseOutlineID)
+    def get_success_url(self):
+        return reverse_lazy('indexmenu')
