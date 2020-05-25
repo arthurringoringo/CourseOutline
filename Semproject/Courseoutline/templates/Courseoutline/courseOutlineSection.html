@@ -39,15 +39,11 @@
 
     {% else %}
      <h4 class="mb-5">{{courseoutline.CourseName}}|{{courseoutline.CourseCode}}-Course Outline</h4>
-    <form method="POST"> 
+    <form method="post"> 
         {% csrf_token %}
           {{form.as_p}}
           <button type="submit" class="btn btn-info" value="Update">Update</button>
     </form> 
-            <div class="container mt-3">
-            <a name="gotosection" id="gotosection" class="btn btn-primary" href="{% url 'courseoutlinesectionlist' courseoutline.CourseOutlineID %}" role="button">Go to sections</a>
-        </div>
-    </div> 
     {% endif %} 
 
 {% endblock %}

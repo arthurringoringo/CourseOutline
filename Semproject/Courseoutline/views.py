@@ -1,5 +1,5 @@
 from django.shortcuts import render
-from django.shortcuts import get_object_or_404, redirect, render
+from django.shortcuts import get_object_or_404, redirect, render ,get_list_or_404
 from django.http.response import HttpResponse, HttpResponseRedirect
 from .models import *
 from django.urls import reverse
@@ -115,17 +115,23 @@ def Courseoutlinesectionscreate(request,courseoutline_id,template_name='Courseou
     return render(request,'Courseoutline/courseOutlineSection1.html',context)
 
 def Courseoutlinesectionslist(request,courseoutline_id,tempalte_name = 'Courseoutline/availablesections.html'):
-    courseoutline = CourseOutline.objects.filter(pk=courseoutline_id)
+    courseoutline = get_object_or_404(CourseOutline,pk=courseoutline_id)
+    section1 = CourseOutlineSection1.objects.filter(CourseOutlineID=courseoutline_id).first()
+    section2 = CourseOutlineSection2.objects.filter(CourseOutlineID=courseoutline_id).first()
+    section3 = CourseOutlineSection3.objects.filter(CourseOutlineID=courseoutline_id).first()
 
-    context = {'courseoutline' : courseoutline,'Course':courseoutline.CourseName,'CourseID':courseoutline.CourseCode}
+
+
+    context = {'courseoutline' : courseoutline,'section1':section1,'section2' : section2,'section3' : section3,}
     return render(request,'Courseoutline/availablesections.html',context)
 
 class CourseoutlineSection123Update(UpdateView):
-    form_class = CreateCourseOutlineForm
+    model = CourseOutlineSection1
+    form_class = CreateCourseOutlineForm1
     template_name = 'Courseoutline/courseOutlineSection.html'
 
     def get_object(self):
-        CourseOutlineID = self.kwargs.get("id")
-        return get_object_or_404(CourseOutline, pk=CourseOutlineID)
+        SectionID = self.kwargs.get("id")
+        return get_object_or_404(CourseOutlineSection1, SectionID=SectionID)
     def get_success_url(self):
-        return reverse_lazy('indexmenu')
+        return reverse_lazy('courseoutlinesectionlist',kwargs={'id': id, 'pk': id})
