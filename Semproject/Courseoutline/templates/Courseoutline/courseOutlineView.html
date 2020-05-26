@@ -1,0 +1,192 @@
+{% extends "Courseoutline/generic_index.html" %}
+
+{% block content %}
+
+
+<section class="testimonials text-center bg-light">
+    <div class="container">
+        <h2 class="mb-5">Course Specification</h2>
+            {% block content %}
+                    <table class="table table-bordered">
+                        <tr class="table">
+                            <th scope="col">Name of the University:</th>
+                            <th scope="col">Asia-Pacific International University</th>
+                        </tr>
+                        <tr class="table">
+                            <th scope="col">Faculty:</th>
+                            <th scope="col">{{CourseOutline.CourseCurriculumID.FacultyName}}</th>
+                        </tr>
+                    </table>
+                    <br>
+                    <br>
+                    <h6 style="text-align:center"><b>Section 1 Course Identification and  General Information</b></h6>
+                    <hr>
+                    <br>
+                    <table class="table table-bordered">
+                        <tr class="table">
+                            <th scope="col">Curriculum Name:</th>
+                            <th scope="col" style="font-weight: normal;">{CourseOutline.CourseCurriculumID.CurriculumName}}</th>
+                        </tr>
+                        <tr class="table">
+                            <th scope="col">Course ID:</th>
+                            <th scope="col" style="font-weight: normal;">{{CourseOutline.CourseOutlineID}}</th>
+                        </tr>
+                        <tr class="table">
+                            <th scope="col">Course Name:</th>
+                            <th scope="col" style="font-weight: normal;">{{CourseOutline.CourseName}}</th>
+                        </tr>
+                        <tr class="table">
+                            <th scope="col">Course Code:</th>
+                            <th scope="col" style="font-weight: normal;">{{CourseOutline.CourseCode}}</th>
+                        </tr>
+                        <tr class="table">
+                            <th scope="col">Number of Credit:</th>
+                            <th scope="col" style="font-weight: normal;">{{Section1.NumberOfCredit}}</th>
+                        </tr>
+                        <tr class="table">
+                            <th scope="col">Resposible Lecturer:</th>
+                            <th scope="col" style="font-weight: normal;">{{CourseOutline.FacultyName}}</th>
+                        </tr>
+                        <tr class="table">
+                            <th scope="col">Category of Course:</th>
+                            <th scope="col" style="font-weight: normal;">{{Section1.CategoryOfCourse}}</th>
+                        </tr>
+                        <tr class="table">
+                            <th scope="col">Prerequisite:</th>
+                            <th scope="col" style="font-weight: normal;">{{Section1.Prerequisite}}</th>
+                        </tr>
+                        <tr class="table">
+                            <th scope="col">Corequisite:</th>
+                            <th scope="col" style="font-weight: normal;">{{Section1.Corequisite}}</th>
+                        </tr>
+                        <tr class="table">
+                            <th scope="col">Place:</th>
+                            <th scope="col" style="font-weight: normal;">{{Section1.Place}}</th>
+                        </tr>
+                        <tr class="table">
+                            <th scope="col">Date of Course Developmentor Revision:</th>
+                            <th scope="col" style="font-weight: normal;">{{Section1.DateOfCourseDevelopmentRevision}}</th>
+                        </tr>
+                    </table>
+                    <br>
+                    <br>
+                    <h6 style="text-align:center"><b>Section 2 Course Aims and Objectives</b></h6>
+                    <hr>
+                    <br>
+                    <table class="table table-bordered">
+                        <tr class="table">
+                            <th scope="col">Course Aims:</th>
+                            <th scope="col" style="font-weight: normal;">{{Section2.CourseAims}}</th>
+                        </tr>
+                        <tr class="table">
+                            <th scope="col">Course Objectives:</th>
+                            <th scope="col" style="font-weight: normal;">{{Section2.ObjofCourse}}</th>
+                        </tr>
+                    </table>
+                    <br>
+                    <br>
+                    <h6 style="text-align:center"><b>Section 3 Course Composition</b></h6>
+                    <hr>
+                    <br>
+                    <table class="table table-bordered">
+                        <tr class="table">
+                            <th scope="col">Course Description:</th>
+                            <th scope="col" style="font-weight: normal;">{{Section3.CourseDesc}}</th>
+                        </tr>
+                    </table>
+                    <table class="table table-bordered">
+                        <tr class="table">
+                            <th scope="col" colspan="8">Number of Hours:</th>
+                        </tr>
+                        <tr>
+                            <td colspan="2"><b>Lecture</b></td>
+                            <td colspan="2"><b>Additional Lecture</b></td>
+                            <td colspan="2"><b>Lab Session</b></td>
+                            <td colspan="2"><b>Self Study</b></td>
+                        </tr>
+                        <tr>
+                            <td colspan="2">{{Section3.NumbofLecturerHrs}}</td>
+                            <td colspan="2">{{Section3.NumofAddLectureHrs}}</td>
+                            <td colspan="2">{{Section3.NumofLabHrs}}</td>
+                            <td colspan="2">{{Section3.NumofSSHrs}}</td>
+                        </tr>
+                        <tr class="table">
+                            <th scope="col" colspan="4">Number of Advising hour per week:</th>
+                            <th scope="col" colspan="4" style="font-weight: normal;">{{Section3.NumbofAdvHrs}}</th>
+                        </tr>
+                    </table>
+                    <br>
+                    <br>
+                    <h6 style="text-align:center"><b>Section 4 Course Composition</b></h6>
+                    <hr>
+                    <br>
+                    <table class="table table-bordered">
+                        <tr class="table">
+                                <th scope="col">Course Topic:</th>
+                                <th scope="col">Course Topic Description:</th>
+                        </tr>
+                        <tr class="table">
+                            {% for Courseoutlinesection4 in object_list %}
+                                <th scope="row" style="font-weight: normal;">{{Section4.CourseTopic}}</th>
+                                <td style="font-weight: normal;">{{Section4.CourseTopicDesc}}</td>
+                            {% endfor %}
+                        </tr>
+                    </table>
+                    <br>
+                    <br>
+                    <h6 style="text-align:center"><b>Section 5 Teaching Evaluation</b></h6>
+                    <hr>
+                    <br>
+                    <table class="table table-bordered">
+                        <thead>>
+                            <tr class="table">
+                                    <th scope="col">No.</th>
+                                    <th scope="col">Evaluation Type</th>
+                                    <th scope="col">Evaluation Percentage</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        {% if courseoutlines %}
+                            {% for Courseoutlinesection5 in courseoutlines %}
+                                <tr class="table">
+                                        <th scope="row">{{forloop.counter}}</th>
+                                        <td style="font-weight: normal;">{{Section5.EvaluationType}}</td>
+                                        <td style="font-weight: normal;">{{Section5.EvaluationPercentage}}</td>
+                                </tr>
+                            {% endfor %}
+                        {% endif %}
+                        </tbody>
+                    </table>
+                    
+                    <br>
+                    <br>
+                    <h6 style="text-align:center"><b>Section 6 Teaching and Learning Resources</b></h6>
+                    <hr>
+                    <br>
+                    <table class="table table-bordered">
+                        <thead>>
+                            <tr class="table">
+                                    <th scope="col">No.</th>
+                                    <th scope="col">Resource Type</th>
+                                    <th scope="col">Resource Description</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        {% if courseoutlines %}
+                            {% for Courseoutlinesection6 in courseoutlines %}
+                                <tr class="table">
+                                        <th scope="row">{{forloop.counter}}</th>
+                                        <td style="font-weight: normal;">{{Section6.ResourcesTypes}}</td>
+                                        <td style="font-weight: normal;">{{Section6.ResourcesDescription}}</td>
+                                </tr>
+                            {% endfor %}
+                        {% endif %}
+                        </tbody>
+                    </table>
+
+                    
+
+     </div>
+</section>
+
+{% endblock %}

@@ -28,11 +28,6 @@ def CurriculumCreate(request,template_name='Courseoutline/curriculum_Detail.html
     context = {'curriculumForm': curriculumForm,'title':'Curriculum','currentcurriculum':currentcurriculum}
     return render(request,'Courseoutline/curriculum_Detail.html',context)
 
-#Waiting for template
-#class CurriculumView(generic.DetailView):
-#        template_name: 'Courseoutline/curriculum_Detail.html'
-#        model = Curriculum
-
 
 def CurriculumDelete(request,curriculum_id):
     obj = get_object_or_404(Curriculum,pk=curriculum_id)
@@ -65,6 +60,21 @@ def CourseoutlineCreate(request,template_name='courseoutline/courseOutlineSectio
         return HttpResponseRedirect(reverse(Courseoutlinesectionscreate, args=(new_courseoutline.pk,)))
     context = {'courseoutlineForm': courseoutlineForm,'title':'Course Outline','courseoutlines':courseoutlines}
     return render(request,'Courseoutline/courseOutlineSection.html',context)
+
+def CourseoutlineView(request,courseoutline_id, tempalte_name = 'Courseoutline/courseOutlineView.html'):
+    CourseOutline = get_object_or_404(CourseOutline,pk=courseoutline_id)
+    Section1 = CourseOutlineSection1.objects.filter(CourseOutlineID=courseoutline_id).first()
+    Section2 = CourseOutlineSection2.objects.filter(CourseOutlineID=courseoutline_id).first()
+    Section3 = CourseOutlineSection3.objects.filter(CourseOutlineID=courseoutline_id).first()
+    # Section4 = CourseOutlineSection1.list.filter(CourseOutlineID=courseoutline_id).first()
+    # Section5 = CourseOutlineSection2.list.filter(CourseOutlineID=courseoutline_id).first()
+    # Section6 = CourseOutlineSection3.list.filter(CourseOutlineID=courseoutline_id).first()
+
+    context = {'CourseOutline' : CourseOutline,'Section1':Section1,'Section2' : Section2,'Section3' : Section3,
+    # 'Section4' : Section4,'Section5' : Section5,'Section6' : Section6,
+    }
+    return render(request,'Courseoutline/courseOutlineView.html',context)
+
 
 def CourseoutlineDelete(request,courseoutline_id):
     obj = get_object_or_404(CourseOutline,pk=courseoutline_id)
@@ -119,8 +129,6 @@ def Courseoutlinesectionslist(request,courseoutline_id,tempalte_name = 'Courseou
     section1 = CourseOutlineSection1.objects.filter(CourseOutlineID=courseoutline_id).first()
     section2 = CourseOutlineSection2.objects.filter(CourseOutlineID=courseoutline_id).first()
     section3 = CourseOutlineSection3.objects.filter(CourseOutlineID=courseoutline_id).first()
-
-
 
     context = {'courseoutline' : courseoutline,'section1':section1,'section2' : section2,'section3' : section3,}
     return render(request,'Courseoutline/availablesections.html',context)

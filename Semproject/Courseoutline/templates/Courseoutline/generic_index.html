@@ -39,6 +39,7 @@
         <ul class="navbar-nav mr-auto">
             <li class="nav-item active">
             <a class="nav-link" href="{% url 'indexmenu' %}">Home <span class="sr-only">(current)</span></a>
+
             <!-- Curriculum dropdown -->
             <li class="nav-item dropdown">
                 <a class="nav-link dropdown-toggle" href="{% url 'indexmenu' %}" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
@@ -47,11 +48,7 @@
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                         <a class="dropdown-item" href="{% url 'curriculumcreate' %}">Create</a>
                         <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="#">View</a>
-                        <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="#">Update</a>
-                        <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="#">Delete</a>
+                        <a class="dropdown-item" href="{% url 'curriculumview' %}">View</a>
                     </div>
             </li>
 
@@ -63,11 +60,7 @@
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                         <a class="dropdown-item" href="{% url 'courseoutlinecreate' %}">Create</a>
                         <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="{% url 'indexmenu' %}">View</a>
-                        <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="#">Update</a>
-                        <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="#">Delete</a>
+                        <a class="dropdown-item" href="{% url 'courseoutlineview' %}">View</a>
                     </div>
             </li>
         </ul>
