@@ -59,8 +59,10 @@
                         <td>{% if section3 == None %}None{% else %}Yes{% endif %}</td>
                         <td><a href =" {% if section3 == None %}NotAvailable{% else %}{% url 'courseoutlinesectionupdate3' section3.SectionID %}">
                                     <button type="submit" class="btn btn-info">Update</button></td>{% endif %}
-                        <td>
-                            
+                        <td>   <!-- <form action = "{% url 'courseoutlinedelete' courseoutline.CourseOutlineID %}" method="POST">
+                                    {% csrf_token %}
+                                    <button type="submit" class="btn btn-danger">Delete</button>
+                                </form>-->
                         </td>
                     </tr>
 
@@ -80,11 +82,10 @@
                                     <button type="submit" class="btn btn-danger">Delete</button>
                                 </form>
                         </td>
-                         <td>
-                            <form action = "{% url 'courseoutlinesection4create' section4.CourseOutlineID.CourseOutlineID %}" method="POST">
-                                {% csrf_token %}
-                                <button type="submit" class="btn btn-info">Add Section 4</button>
-                            </form>
+                         <td>   <form action = "{% url 'courseoutlinesection4create' section4.CourseOutlineID.CourseOutlineID %}" method="POST">
+                                    {% csrf_token %}
+                                    <button type="submit" class="btn btn-danger">Add Section 4</button>
+                                </form>
                         </td>
                     </tr>
 
@@ -107,12 +108,6 @@
                                     <button type="submit" class="btn btn-danger">Delete</button>
                                 </form>
                         </td>
-                        <td>
-                            <form action = "{% url 'courseoutlinesection5create' section5.CourseOutlineID.CourseOutlineID %}" method="POST">
-                                {% csrf_token %}
-                                <button type="submit" class="btn btn-info">Add Section 5</button>
-                            </form>
-                        </td>
                     </tr>
 
                 </a>
@@ -130,17 +125,10 @@
                         <td>{% if section6 == None %}None{% else %}Yes{% endif %}</td>
                         <td><a href =" {% if section6 == None %}NotAvailable{% else %}{% url 'courseoutlinesectionupdate6' section6.SectionID %}">
                                     <button type="submit" class="btn btn-info">Update</button></td>{% endif %}
-                        <td>   
-                            <form action = "{% url 'courseoutlinesectiondelete6' section6.SectionID %}" method="POST">
+                        <td>   <form action = "{% url 'courseoutlinesectiondelete6' section6.SectionID %}" method="POST">
                                     {% csrf_token %}
                                     <button type="submit" class="btn btn-danger">Delete</button>
-                            </form>
-                        </td>
-                        <td>
-                            <form action = "{% url 'courseoutlinesection6create' section6.CourseOutlineID.CourseOutlineID %}" method="POST">
-                                {% csrf_token %}
-                                <button type="submit" class="btn btn-info">Add Section 6</button>
-                            </form>
+                                </form>
                         </td>
                     </tr>
 

@@ -10,8 +10,38 @@
                  <button type="savemultiple" name="savemultiple" class="btn btn-primary mb-2" >Save and Add another Topics</button>
                   <button type="Finish and next" name="nextsection" class="btn btn-primary mb-2" value="cancel" formnovalidate >Finish and Go to Section 5</button>
                
-                
             </form>
+
+
+            <table class="table">
+                <thead>
+                    <tr>
+                    <th scope="col">No.</th>
+                    <th scope="col">Course Topic</th>
+                    <th scope="col">Course Topic Description</th>
+                    <th scope="col"></th>
+                    </tr>
+                </thead>
+                <tbody>
+
+                    <!-- Double Check this before adding to section 5 & 6 -->
+            {% for courseoutline in courseoutlines %}
+                <tr>
+                    <th scope="row">{{forloop.counter}}</th>
+                    <td>{{section4.CourseTopic}}</td>
+                    <td>{{section4.CourseTopicDesc}}</td>
+                    <td>    
+                        <form action = "{% url 'courseoutlinesectiondelete4' courseoutline.CourseOutlineID %}" method="POST">
+                            {% csrf_token %}
+                            <button type="submit" class="btn btn-danger">Delete</button>
+                        </form>
+                    </td>
+                </tr>
+            </a>
+            </tbody>
+        </table>
+            
+            {% endfor %}
 
 
 
