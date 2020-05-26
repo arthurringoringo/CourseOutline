@@ -125,13 +125,35 @@ def Courseoutlinesectionslist(request,courseoutline_id,tempalte_name = 'Courseou
     context = {'courseoutline' : courseoutline,'section1':section1,'section2' : section2,'section3' : section3,}
     return render(request,'Courseoutline/availablesections.html',context)
 
-class CourseoutlineSection123Update(UpdateView):
+class CourseoutlineSection1Update(UpdateView):
     model = CourseOutlineSection1
     form_class = CreateCourseOutlineForm1
-    template_name = 'Courseoutline/courseOutlineSection.html'
-
+    template_name = 'Courseoutline/availablesections.html'
     def get_object(self):
         SectionID = self.kwargs.get("id")
-        return get_object_or_404(CourseOutlineSection1, SectionID=SectionID)
+        object1 = get_object_or_404(CourseOutlineSection1, SectionID=SectionID)
+        return object1
     def get_success_url(self):
-        return reverse_lazy('courseoutlinesectionlist',kwargs={'id': id, 'pk': id})
+        return reverse_lazy('courseoutlinesectionlist', args = (self.object.CourseOutlineID.CourseOutlineID,))
+
+class CourseoutlineSection2Update(UpdateView):
+    model = CourseOutlineSection2
+    form_class = CreateCourseOutlineForm2
+    template_name = 'Courseoutline/availablesections.html'
+    def get_object(self):
+        SectionID = self.kwargs.get("id")
+        object1 = get_object_or_404(CourseOutlineSection2, SectionID=SectionID)
+        return object1
+    def get_success_url(self):
+        return reverse_lazy('courseoutlinesectionlist', args = (self.object.CourseOutlineID.CourseOutlineID,))
+
+class CourseoutlineSection3Update(UpdateView):
+    model = CourseOutlineSection3
+    form_class = CreateCourseOutlineForm3
+    template_name = 'Courseoutline/availablesections.html'
+    def get_object(self):
+        SectionID = self.kwargs.get("id")
+        object1 = get_object_or_404(CourseOutlineSection3, SectionID=SectionID)
+        return object1
+    def get_success_url(self):
+        return reverse_lazy('courseoutlinesectionlist', args = (self.object.CourseOutlineID.CourseOutlineID,))

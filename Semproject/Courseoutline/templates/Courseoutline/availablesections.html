@@ -3,7 +3,8 @@
 
 {% block content %}
      
- <h4 class="mb-5">{{courseoutline.CourseName}} | {{courseoutline.CourseCode}}-Course Outline</h4>
+        {% url 'courseoutlinesectionlist' courseoutline_id=courseoutline.CourseOutlineID as the_url %}
+        {% if  request.get_full_path == the_url%}
  <table class="table">
         <thead>
             <tr>
@@ -15,16 +16,16 @@
             </tr>
         </thead>
         <tbody>
-        {% if  request.get_full_path == "/courseoutline/18/view/sections/"%}
+
      
                     <tr>
-                    {{section1.CourseOutlineID.CourseOutlineID}}
-                    
+
+                    <h4 class="mb-5">{{courseoutline.CourseName}} | {{courseoutline.CourseCode}}-Course Outline</h4>
                         <th scope="row">Section 1</th>
                         <td><a href =" {% url 'courseoutlinesectionupdate' section1.SectionID %}"> {{section1.SectionName}}</a></td>
                         <td>{% if section1 == None %}{% else %}Yes{% endif %}</td>
-                        <td><a href =" {% url 'courseoutlinesectionupdate' section1.SectionID %}">
-                                    <button type="submit" class="btn btn-info">Update</button></td>
+                        <td><a href =" {% if section1 == None %}NotAvailable{% else %}{% url 'courseoutlinesectionupdate' section1.SectionID %}">
+                                    <button type="submit" class="btn btn-info">Update</button>{% endif %}</td>
                         <td>    <form action = "{% url 'courseoutlinedelete' courseoutline.CourseOutlineID %}" method="POST">
                                     {% csrf_token %}
                                     <button type="submit" class="btn btn-danger">Delete</button>
@@ -36,10 +37,13 @@
                 <tr>
             
                     
+            
+                    <tr>
                         <th scope="row">Section 2</th>
-                        <td>{% if section2 == None %}Aims and Objectives{% else %}<a href =" {% url 'courseoutlinesectionupdate' section2.SectionID %}"> {{section2.SectionName}}</a>{% endif %}</td>
-                        <td>{% if section2 == None %}No{% else %}Yes{% endif %}</td>
-                        <td></td>
+                        <td><a href =" {% url 'courseoutlinesectionupdate2' section2.SectionID %}"> {{section2.SectionName}}</a></td>
+                        <td>{% if section2 == none %}None{% else %}Yes{% endif %}</td>
+                        <td><a href =" {% if section2 == None %}NotAvailable{% else %}{% url 'courseoutlinesectionupdate2' section2.SectionID %}">
+                                    <button type="submit" class="btn btn-info">Update</button></td>{% endif %}
                         <td>    <form action = "{% url 'courseoutlinedelete' courseoutline.CourseOutlineID %}" method="POST">
                                     {% csrf_token %}
                                     <button type="submit" class="btn btn-danger">Delete</button>
@@ -48,23 +52,77 @@
                     </tr>
 
                 </a>
+     
+                    <tr>
+                        <th scope="row">Section 3</th>
+                        <td><a href =" {% url 'courseoutlinesectionupdate3' section3.SectionID %}"> {{section3.SectionName}}</a></td>
+                        <td>{% if section3 == None %}None{% else %}Yes{% endif %}</td>
+                        <td><a href =" {% if section3 == None %}NotAvailable{% else %}{% url 'courseoutlinesectionupdate3' section3.SectionID %}">
+                                    <button type="submit" class="btn btn-info">Update</button></td>{% endif %}
+                        <td>    <form action = "{% url 'courseoutlinedelete' courseoutline.CourseOutlineID %}" method="POST">
+                                    {% csrf_token %}
+                                    <button type="submit" class="btn btn-danger">Delete</button>
+                                </form>
+                        </td>
+                    </tr>
+
+                </a>
+  {% endif %}
             
+ 
+    {% url 'courseoutlinesectionupdate' id=courseoutlinesection1.SectionID as the_url1 %}
+
+   {% if  request.get_full_path == the_url1%}
   
-
-    {% else %}
         
+        <h4 class="mb-5">{{courseoutlinesection1.CourseOutlineID.CourseName}} | {{courseoutlinesection1.CourseOutlineID.CourseCode}}-Course Outline</h4>
+            <form method="post"> 
+                {% csrf_token %}
+                {{form.as_p}}
+                <button type="submit" class="btn btn-info" value="Update">Update</button>
+            </form> 
+                    <div class="container mt-3">
+                    <a name="" id="" class="btn btn-primary" href="{% url 'courseoutlinesectionlist' courseoutlinesection1.CourseOutlineID.CourseOutlineID %}" role="button">go to section</a>
+                </div>
+            </div> 
+   {% endif %}
+   
+    {% url 'courseoutlinesectionupdate2' id=courseoutlinesection2.SectionID as the_url2 %}
 
-     <h4 class="mb-5">{{courseoutline.CourseName}}|{{courseoutline.CourseCode}}-Course Outline</h4>
-    <form method="post"> 
-        {% csrf_token %}
-          {{form.as_p}}
-          <button type="submit" class="btn btn-info" value="Update">Update</button>
-    </form> 
-            <div class="container mt-3">
-            <a name="gotosection" id="gotosection" class="btn btn-primary" href="{% url 'courseoutlinesectionlist' section1.CourseOutlineID.CourseOutlineID%}" role="button">Go to sections</a>
-        </div>
-    </div> 
-    {% endif %}
+   {% if  request.get_full_path == the_url2%}
+  
+        
+        <h4 class="mb-5">{{courseoutlinesection2.CourseOutlineID.CourseName}} | {{courseoutlinesection2.CourseOutlineID.CourseCode}}-Course Outline</h4>
+            <form method="post"> 
+                {% csrf_token %}
+                {{form.as_p}}
+                <button type="submit" class="btn btn-info" value="Update">Update</button>
+            </form> 
+                    <div class="container mt-3">
+                    <a name="" id="" class="btn btn-primary" href="{% url 'courseoutlinesectionlist' courseoutlinesection2.CourseOutlineID.CourseOutlineID %}" role="button">go to section</a>
+                </div>
+            </div> 
+   {% endif %}
+
+
+    {% url 'courseoutlinesectionupdate3' id=courseoutlinesection3.SectionID as the_url3 %}
+
+   {% if  request.get_full_path == the_url3%}
+  
+        
+        <h4 class="mb-5">{{courseoutlinesection3.CourseOutlineID.CourseName}} | {{courseoutlinesection3.CourseOutlineID.CourseCode}}-Course Outline</h4>
+            <form method="post"> 
+                {% csrf_token %}
+                {{form.as_p}}
+                <button type="submit" class="btn btn-info" value="Update">Update</button>
+            </form> 
+                    <div class="container mt-3">
+                    <a name="" id="" class="btn btn-primary" href="{% url 'courseoutlinesectionlist' courseoutlinesection3.CourseOutlineID.CourseOutlineID %}" role="button">go to section</a>
+                </div>
+            </div> 
+   {% endif %}
+
+   
 
 
 

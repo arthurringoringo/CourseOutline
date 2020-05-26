@@ -34,17 +34,22 @@
                     </td>
                 </tr>
             </a>
+            
             {% endfor %}
         {% endif %}  
 
     {% else %}
-     <h4 class="mb-5">{{courseoutline.CourseName}}|{{courseoutline.CourseCode}}-Course Outline</h4>
+        {{courseoutline.SectionID}}  
+     <h4 class="mb-5">{{tempid.CourseName}}|{{tempid.CourseCode}}-Course Outline</h4>
     <form method="post"> 
         {% csrf_token %}
           {{form.as_p}}
           <button type="submit" class="btn btn-info" value="Update">Update</button>
     </form> 
-    {% endif %} 
+          
+        <a name="" id="" class="btn btn-primary" href="{% url 'courseoutlinesectionlist' courseoutline.CourseOutlineID %}" role="button">go to section</a>
+            
+ {% endif %}
 
 {% endblock %}
 
