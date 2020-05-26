@@ -243,7 +243,7 @@ def CourseoutlineSection5Create(request,courseoutline_id,template_name='Courseou
                 tempcourseoutline = courseoutlineForm5.save(commit=False)
                 tempcourseoutline.CourseOutlineID =currentcourseoutlineobj
                 tempcourseoutline.save()
-                return redirect('indexmenu')
+                return redirect('courseoutlinesection6create',courseoutline_id)
     elif request.method == 'POST' and 'nextsection' in request.POST :
        return redirect('courseoutlinesection5create',courseoutline_id)
     context = {'courseoutlineForm5': courseoutlineForm5,'currentcourseoutlineobj':currentcourseoutlineobj,'title':'Course Topics','Course':currentcourseoutlineobj.CourseName,'CourseID':currentcourseoutlineobj.CourseCode}
