@@ -21,5 +21,7 @@ urlpatterns = [
      path('update/sections1/<int:id>/',views.CourseoutlineSection1Update.as_view(),name='courseoutlinesectionupdate'),
      path('update/sections2/<int:id>/',views.CourseoutlineSection2Update.as_view(),name='courseoutlinesectionupdate2'),
      path('update/sections3/<int:id>/',views.CourseoutlineSection3Update.as_view(),name='courseoutlinesectionupdate3'),
+     path('create/sections4/<int:courseoutline_id>/',views.CourseoutlineSection4Create,name='courseoutlinesection4create')
+
 ]
 

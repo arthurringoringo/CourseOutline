@@ -26,9 +26,9 @@
                         <td>{% if section1 == None %}{% else %}Yes{% endif %}</td>
                         <td><a href =" {% if section1 == None %}NotAvailable{% else %}{% url 'courseoutlinesectionupdate' section1.SectionID %}">
                                     <button type="submit" class="btn btn-info">Update</button>{% endif %}</td>
-                        <td>    <form action = "{% url 'courseoutlinedelete' courseoutline.CourseOutlineID %}" method="POST">
+                        <td>    <!--<form action = "{% url 'courseoutlinedelete' courseoutline.CourseOutlineID %}" method="POST">
                                     {% csrf_token %}
-                                    <button type="submit" class="btn btn-danger">Delete</button>
+                                    <button type="submit" class="btn btn-danger">Delete</button>-->
                                 </form>
                         </td>
                     </tr>
@@ -44,10 +44,10 @@
                         <td>{% if section2 == none %}None{% else %}Yes{% endif %}</td>
                         <td><a href =" {% if section2 == None %}NotAvailable{% else %}{% url 'courseoutlinesectionupdate2' section2.SectionID %}">
                                     <button type="submit" class="btn btn-info">Update</button></td>{% endif %}
-                        <td>    <form action = "{% url 'courseoutlinedelete' courseoutline.CourseOutlineID %}" method="POST">
+                        <td>   <!-- <form action = "{% url 'courseoutlinedelete' courseoutline.CourseOutlineID %}" method="POST">
                                     {% csrf_token %}
                                     <button type="submit" class="btn btn-danger">Delete</button>
-                                </form>
+                                </form>-->
                         </td>
                     </tr>
 
@@ -59,10 +59,10 @@
                         <td>{% if section3 == None %}None{% else %}Yes{% endif %}</td>
                         <td><a href =" {% if section3 == None %}NotAvailable{% else %}{% url 'courseoutlinesectionupdate3' section3.SectionID %}">
                                     <button type="submit" class="btn btn-info">Update</button></td>{% endif %}
-                        <td>    <form action = "{% url 'courseoutlinedelete' courseoutline.CourseOutlineID %}" method="POST">
+                        <td>   <!-- <form action = "{% url 'courseoutlinedelete' courseoutline.CourseOutlineID %}" method="POST">
                                     {% csrf_token %}
                                     <button type="submit" class="btn btn-danger">Delete</button>
-                                </form>
+                                </form>-->
                         </td>
                     </tr>
 
