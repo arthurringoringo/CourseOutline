@@ -1,0 +1,17 @@
+<!-- Course Outline Sections 4 -->
+{% extends "Courseoutline/generic_index.html" %}
+
+{% block content %}
+
+            <form action = "{% url 'courseoutlinesection5create' currentcourseoutlineobj.CourseOutlineID %}" method="POST"> 
+                {% csrf_token %}
+                    {{courseoutlineForm5}}
+                 <button type="savefinish"  class="btn btn-primary mb-2" >Save and Proceed to Section 6</button>
+                 <button type="savemultiple" name="savemultiple" class="btn btn-primary mb-2" >Save and Add another Evaluation plan</button>
+               
+                
+            </form>
+
+
+
+{% endblock %}

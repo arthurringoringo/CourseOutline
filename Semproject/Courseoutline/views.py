@@ -62,7 +62,7 @@ def CourseoutlineCreate(request,template_name='courseoutline/courseOutlineSectio
     return render(request,'Courseoutline/courseOutlineSection.html',context)
 
 def CourseoutlineView(request,courseoutline_id, tempalte_name = 'Courseoutline/courseOutlineView.html'):
-    CourseOutline = get_object_or_404(CourseOutline,pk=courseoutline_id)
+    CourseOutline1 = get_object_or_404(CourseOutline,pk=courseoutline_id)
     Section1 = CourseOutlineSection1.objects.filter(CourseOutlineID=courseoutline_id).first()
     Section2 = CourseOutlineSection2.objects.filter(CourseOutlineID=courseoutline_id).first()
     Section3 = CourseOutlineSection3.objects.filter(CourseOutlineID=courseoutline_id).first()
@@ -70,7 +70,7 @@ def CourseoutlineView(request,courseoutline_id, tempalte_name = 'Courseoutline/c
     # Section5 = CourseOutlineSection2.list.filter(CourseOutlineID=courseoutline_id).first()
     # Section6 = CourseOutlineSection3.list.filter(CourseOutlineID=courseoutline_id).first()
 
-    context = {'CourseOutline' : CourseOutline,'Section1':Section1,'Section2' : Section2,'Section3' : Section3,
+    context = {'CourseOutline' : CourseOutline1,'Section1':Section1,'Section2' : Section2,'Section3' : Section3,
     # 'Section4' : Section4,'Section5' : Section5,'Section6' : Section6,
     }
     return render(request,'Courseoutline/courseOutlineView.html',context)

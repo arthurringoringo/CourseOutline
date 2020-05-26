@@ -6,7 +6,6 @@
 <section class="testimonials text-center bg-light">
     <div class="container">
         <h2 class="mb-5">Course Specification</h2>
-            {% block content %}
                     <table class="table table-bordered">
                         <tr class="table">
                             <th scope="col">Name of the University:</th>
@@ -25,7 +24,7 @@
                     <table class="table table-bordered">
                         <tr class="table">
                             <th scope="col">Curriculum Name:</th>
-                            <th scope="col" style="font-weight: normal;">{CourseOutline.CourseCurriculumID.CurriculumName}}</th>
+                            <th scope="col" style="font-weight: normal;">{{CourseOutline.CourseCurriculumID.CurriculumName}}</th>
                         </tr>
                         <tr class="table">
                             <th scope="col">Course ID:</th>
@@ -49,7 +48,7 @@
                         </tr>
                         <tr class="table">
                             <th scope="col">Category of Course:</th>
-                            <th scope="col" style="font-weight: normal;">{{Section1.CategoryOfCourse}}</th>
+                            <th scope="col" style="font-weight: normal;">{{Section1.CategoryofCourse}}</th>
                         </tr>
                         <tr class="table">
                             <th scope="col">Prerequisite:</th>
@@ -65,7 +64,7 @@
                         </tr>
                         <tr class="table">
                             <th scope="col">Date of Course Developmentor Revision:</th>
-                            <th scope="col" style="font-weight: normal;">{{Section1.DateOfCourseDevelopmentRevision}}</th>
+                            <th scope="col" style="font-weight: normal;">{{Section1.DateofCourseDevelopmentorRevision}}</th>
                         </tr>
                     </table>
                     <br>
@@ -105,14 +104,14 @@
                             <td colspan="2"><b>Self Study</b></td>
                         </tr>
                         <tr>
-                            <td colspan="2">{{Section3.NumbofLecturerHrs}}</td>
+                            <td colspan="2">{{Section3.NumofLectureHrs}}</td>
                             <td colspan="2">{{Section3.NumofAddLectureHrs}}</td>
                             <td colspan="2">{{Section3.NumofLabHrs}}</td>
                             <td colspan="2">{{Section3.NumofSSHrs}}</td>
                         </tr>
                         <tr class="table">
                             <th scope="col" colspan="4">Number of Advising hour per week:</th>
-                            <th scope="col" colspan="4" style="font-weight: normal;">{{Section3.NumbofAdvHrs}}</th>
+                            <th scope="col" colspan="4" style="font-weight: normal;">{{Section3.NumofAdvHrs}}</th>
                         </tr>
                     </table>
                     <br>
