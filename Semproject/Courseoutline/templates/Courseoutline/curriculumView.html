@@ -1,0 +1,42 @@
+{% extends "Courseoutline/generic_index.html" %}
+
+{% block content %}
+
+    <section class="testimonials text-center bg-light">
+        <div class="container">
+            {% if currentcurriculum %}
+                {% for curriculum in currentcurriculum %}
+                    <div class="row">
+                        <div class="col-sm-6">
+                            <div class="card">
+                                <div class="card-body">
+                                    <h5 class="card-title">{{curriculum.CurriculumName}}</h5>
+                                    <p class="card-text">{{curriculum.FacultyName}}</p>
+                                    <a href =" {% url 'update' curriculum.CurriculumID %}" class="btn btn-primary">View</a>
+                                </div>
+                                <div class="card-footer">
+                                    <small class="text-muted">{{curriculum.CreateDate}}</small>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-sm-6">
+                            <div class="card">
+                                <div class="card-body">
+                                    <h5 class="card-title">{{curriculum.CurriculumName}}</h5>
+                                    <p class="card-text">{{curriculum.FacultyName}}</p>
+                                    <a href =" {% url 'update' curriculum.CurriculumID %}" class="btn btn-primary">View</a>
+                                </div>
+                                <div class="card-footer">
+                                    <small class="text-muted">{{curriculum.CreateDate}}</small>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <hr>
+                    <br>  
+                {% endfor %}
+            {% endif %}  
+        </div>
+    </section>
+
+{% endblock %}
