@@ -15,6 +15,8 @@ urlpatterns = [
      path('view/courseoutline/<int:courseoutline_id>/',views.CourseoutlineView,name='courseoutlineview'),
      path('<int:courseoutline_id>/delete/',views.CourseoutlineDelete,name='courseoutlinedelete'),
      path('<int:id>/update/',views.CourseoutlineUpdate.as_view(),name='courseoutlineupdate'),
+     path('courseoutline/view/all/',views.CourseOutlineList.as_view(),name='courseoutlinelistview'),
+
      #COURSEOUTLINE SECTIONS URLS
      path('<int:courseoutline_id>/create/sections/',views.Courseoutlinesectionscreate,name='courseoutlinesectioncreate'),
      path('view/sections/<int:courseoutline_id>/',views.Courseoutlinesectionslist,name='courseoutlinesectionlist'),
