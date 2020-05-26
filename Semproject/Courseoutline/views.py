@@ -81,9 +81,9 @@ def CourseoutlineView(request,courseoutline_id, tempalte_name = 'Courseoutline/c
     Section1 = CourseOutlineSection1.objects.filter(CourseOutlineID=courseoutline_id).first()
     Section2 = CourseOutlineSection2.objects.filter(CourseOutlineID=courseoutline_id).first()
     Section3 = CourseOutlineSection3.objects.filter(CourseOutlineID=courseoutline_id).first()
-    Section4 = CourseOutlineSection1.list.filter(CourseOutlineID=courseoutline_id)
-    Section5 = CourseOutlineSection2.list.filter(CourseOutlineID=courseoutline_id)
-    Section6 = CourseOutlineSection3.list.filter(CourseOutlineID=courseoutline_id)
+    Section4 = CourseOutlineSection4.objects.filter(CourseOutlineID=courseoutline_id)
+    Section5 = CourseOutlineSection5.objects.filter(CourseOutlineID=courseoutline_id)
+    Section6 = CourseOutlineSection6.objects.filter(CourseOutlineID=courseoutline_id)
 
     context = {'CourseOutline' : CourseOutline1,'Section1':Section1,'Section2' : Section2,'Section3' : Section3,'Section4' : Section4,'Section5' : Section5,'Section6' : Section6}
     return render(request,'Courseoutline/courseOutlineView.html',context)

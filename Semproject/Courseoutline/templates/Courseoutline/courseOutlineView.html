@@ -124,12 +124,14 @@
                                 <th scope="col">Course Topic:</th>
                                 <th scope="col">Course Topic Description:</th>
                         </tr>
+                        {% for Courseoutlinesection4 in Section4 %}
                         <tr class="table">
-                            {% for Courseoutlinesection4 in object_list %}
-                                <th scope="row" style="font-weight: normal;">{{Section4.CourseTopic}}</th>
-                                <td style="font-weight: normal;">{{Section4.CourseTopicDesc}}</td>
-                            {% endfor %}
+                            
+                                <th scope="row" style="font-weight: normal;">{{Courseoutlinesection4.CourseTopic}}</th>
+                                <td style="font-weight: normal;">{{Courseoutlinesection4.CourseTopicDesc}}</td>
+                            
                         </tr>
+                        {% endfor %}
                     </table>
                     <br>
                     <br>

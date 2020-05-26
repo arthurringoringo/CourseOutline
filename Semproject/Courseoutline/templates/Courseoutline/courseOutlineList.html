@@ -4,8 +4,8 @@
 
     <section class="testimonials text-center bg-light">
         <div class="container">
-            {% if courseoutlines %}
-                {% for courseoutline in courseoutlines %}
+            {% if courseoutline %}
+                {% for CourseOutline in courseoutline %}
                    
                     <div class="row">
                         <div class="col-sm-6">
@@ -13,7 +13,7 @@
                                 <div class="card-body">
                                     <h5 class="card-title">{{CourseOutline.CourseName}}</h5>
                                     <p class="card-text">{{CourseOutline.FacultyName}}</p>
-                                    <a href =" {% url 'update' curriculum.CurriculumID %}" class="btn btn-primary">View</a>
+                                    <a href =" {% url 'courseoutlineview' CourseOutline.CourseOutlineID %}" class="btn btn-primary">View</a>
                                 </div>
                                 <div class="card-footer">
                                     <small class="text-muted">{{Section1.DateofCourseDevelopmentorRevision}}</small>
@@ -27,7 +27,7 @@
                                     <div class="card-body">
                                         <h5 class="card-title">{{CourseOutline.CourseName}}</h5>
                                         <p class="card-text">{{CourseOutline.FacultyName}}</p>
-                                        <a href =" {% url 'update' curriculum.CurriculumID %}" class="btn btn-primary">View</a>
+                                        <a href =" {% url 'courseoutlineview' CourseOutline.CourseOutlineID %}" class="btn btn-primary">View</a>
                                     </div>
                                     <div class="card-footer">
                                         <small class="text-muted">{{Section1.DateofCourseDevelopmentorRevision}}</small>
