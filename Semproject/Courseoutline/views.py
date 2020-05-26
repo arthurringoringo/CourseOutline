@@ -12,7 +12,7 @@ from django.urls import reverse_lazy
 # Create your views here.
 
 def IndexMenu(request,template_name='Courseoutline/index.html'):
-    login_url = '/accounts/login/'
+
     return render(request,'Courseoutline/index.html')
 
 #### CURICULUM
@@ -246,7 +246,7 @@ def CourseoutlineSection5Create(request,courseoutline_id,template_name='Courseou
                 tempcourseoutline.save()
                 return redirect('courseoutlinesection6create',courseoutline_id)
     elif request.method == 'POST' and 'nextsection' in request.POST :
-       return redirect('courseoutlinesection5create',courseoutline_id)
+       return redirect('courseoutlinesection6create',courseoutline_id)
     context = {'courseoutlineForm5': courseoutlineForm5,'currentcourseoutlineobj':currentcourseoutlineobj,'title':'Course Topics','Course':currentcourseoutlineobj.CourseName,'CourseID':currentcourseoutlineobj.CourseCode}
     return render(request,'Courseoutline/courseOutlineSection5.html',context)
 
