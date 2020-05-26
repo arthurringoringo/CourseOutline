@@ -148,11 +148,11 @@
                         </thead>
                         <tbody>
                         {% if courseoutlines %}
-                            {% for Courseoutlinesection5 in courseoutlines %}
+                            {% for Courseoutlinesection5 in Section5 %}
                                 <tr class="table">
                                         <th scope="row">{{forloop.counter}}</th>
-                                        <td style="font-weight: normal;">{{Section5.EvaluationType}}</td>
-                                        <td style="font-weight: normal;">{{Section5.EvaluationPercentage}}</td>
+                                        <td style="font-weight: normal;">{{Courseoutlinesection5.EvaluationType}}</td>
+                                        <td style="font-weight: normal;">{{Courseoutlinesection5.EvaluationPercentage}}</td>
                                 </tr>
                             {% endfor %}
                         {% endif %}
@@ -174,11 +174,11 @@
                         </thead>
                         <tbody>
                         {% if courseoutlines %}
-                            {% for Courseoutlinesection6 in courseoutlines %}
+                            {% for Courseoutlinesection6 in Section6 %}
                                 <tr class="table">
                                         <th scope="row">{{forloop.counter}}</th>
-                                        <td style="font-weight: normal;">{{Section6.ResourcesTypes}}</td>
-                                        <td style="font-weight: normal;">{{Section6.ResourcesDescription}}</td>
+                                        <td style="font-weight: normal;">{{Courseoutlinesection6.ResourcesTypes}}</td>
+                                        <td style="font-weight: normal;">{{Courseoutlinesection6.ResourcesDescription}}</td>
                                 </tr>
                             {% endfor %}
                         {% endif %}
