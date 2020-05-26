@@ -16,6 +16,14 @@ def IndexMenu(request,template_name='Courseoutline/index.html'):
 
 #### CURICULUM
 
+class CurriculumList(ListView):
+    template_name = 'Courseoutline/curriculumView.html'
+    context_object_name = 'CourseOutline'
+    model = Curriculum
+    def get_queryset(self):
+        return Curriculum.objects.order_by('pk')
+    
+
 
 def CurriculumCreate(request,template_name='Courseoutline/curriculum_Detail.html'):
     curriculumForm = CreateCurriculumForm()
@@ -177,12 +185,39 @@ def CourseoutlineSection4Create(request,courseoutline_id,template_name='Courseou
                 tempcourseoutline.CourseOutlineID =currentcourseoutlineobj
                 tempcourseoutline.save()
                 return redirect('courseoutlinesection4create',courseoutline_id)
-    else:
+    elif request.method == 'POST' and 'saveandfinish' in request.POST :
         courseoutlineForm4 = CreateCourseOutlineForm4(request.POST)
         if courseoutlineForm4.is_valid():
                 tempcourseoutline = courseoutlineForm4.save(commit=False)
                 tempcourseoutline.CourseOutlineID =currentcourseoutlineobj
                 tempcourseoutline.save()
-                return redirect('indexmenu')
+                return redirect('courseoutlinesection5create',courseoutline_id)
+    elif request.method == 'POST' and 'nextsection' in request.POST :
+       return redirect('courseoutlinesection5create',courseoutline_id)
     context = {'courseoutlineForm4': courseoutlineForm4,'currentcourseoutlineobj':currentcourseoutlineobj,'title':'Course Topics','Course':currentcourseoutlineobj.CourseName,'CourseID':currentcourseoutlineobj.CourseCode}
     return render(request,'Courseoutline/courseOutlineSection4.html',context)
+
+
+def CourseoutlineSection5Create(request,courseoutline_id,template_name='Courseoutline/courseOutlineSection5.html'):
+    
+    currentcourseoutlineobj = get_object_or_404(CourseOutline,pk = courseoutline_id)
+    courseoutlineForm5 = CreateCourseOutlineForm5()
+        
+    if request.method == 'POST' and 'savemultiple' in request.POST :
+        courseoutlineForm5 = CreateCourseOutlineForm5(request.POST)
+        if courseoutlineForm5.is_valid():
+                tempcourseoutline = courseoutlineForm5.save(commit=False)
+                tempcourseoutline.CourseOutlineID =currentcourseoutlineobj
+                tempcourseoutline.save()
+                return redirect('courseoutlinesection5create',courseoutline_id)
+    elif request.method == 'POST' and 'saveandfinish' in request.POST :
+        courseoutlineForm5 = CreateCourseOutlineForm5(request.POST)
+        if courseoutlineForm5.is_valid():
+                tempcourseoutline = courseoutlineForm5.save(commit=False)
+                tempcourseoutline.CourseOutlineID =currentcourseoutlineobj
+                tempcourseoutline.save()
+                return redirect('indexmenu')
+    elif request.method == 'POST' and 'nextsection' in request.POST :
+       return redirect('courseoutlinesection5create',courseoutline_id)
+    context = {'courseoutlineForm5': courseoutlineForm5,'currentcourseoutlineobj':currentcourseoutlineobj,'title':'Course Topics','Course':currentcourseoutlineobj.CourseName,'CourseID':currentcourseoutlineobj.CourseCode}
+    return render(request,'Courseoutline/courseOutlineSection5.html',context)

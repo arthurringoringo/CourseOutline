@@ -6,8 +6,9 @@
             <form action = "{% url 'courseoutlinesection4create' currentcourseoutlineobj.CourseOutlineID %}" method="POST"> 
                 {% csrf_token %}
                     {{courseoutlineForm4}}
-                 <button type="savefinish"  class="btn btn-primary mb-2" >Save and Proceed to Section 5</button>
+                 <button type="savefinish" name="saveandfinish" class="btn btn-primary mb-2" >Save and Proceed to Section 5</button>
                  <button type="savemultiple" name="savemultiple" class="btn btn-primary mb-2" >Save and Add another Topics</button>
+                  <button type="Finish and next" name="nextsection" class="btn btn-primary mb-2" value="cancel" formnovalidate >Finish and Go to Section 5</button>
                
                 
             </form>

@@ -9,6 +9,7 @@ urlpatterns = [
      path('create/curriculum/',views.CurriculumCreate,name='curriculumcreate'),
      path('curriculum/<int:curriculum_id>/delete/',views.CurriculumDelete,name='curriculumdelete'),
      path('curriculum/<int:id>/update/',views.CurriculumUpdate.as_view(),name='update'),
+     path('curriculum/view/all/',views.CurriculumList.as_view(),name='curriculumlistview'),
      #COURSEOUTLINE URLS
      path('create/courseoutline/',views.CourseoutlineCreate,name='courseoutlinecreate'),
      path('view/courseoutline/<int:courseoutline_id>/',views.CourseoutlineView,name='courseoutlineview'),
@@ -20,7 +21,8 @@ urlpatterns = [
      path('update/sections1/<int:id>/',views.CourseoutlineSection1Update.as_view(),name='courseoutlinesectionupdate'),
      path('update/sections2/<int:id>/',views.CourseoutlineSection2Update.as_view(),name='courseoutlinesectionupdate2'),
      path('update/sections3/<int:id>/',views.CourseoutlineSection3Update.as_view(),name='courseoutlinesectionupdate3'),
-     path('create/sections4/<int:courseoutline_id>/',views.CourseoutlineSection4Create,name='courseoutlinesection4create')
+     path('create/sections4/<int:courseoutline_id>/',views.CourseoutlineSection4Create,name='courseoutlinesection4create'),
+     path('create/sections5/<int:courseoutline_id>/',views.CourseoutlineSection5Create,name='courseoutlinesection5create')
 
 ]
 

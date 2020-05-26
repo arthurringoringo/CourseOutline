@@ -59,7 +59,7 @@ class CreateCourseOutlineForm4(forms.ModelForm):
         fields = 'CourseTopic', 'CourseTopicDesc'
 
 class CreateCourseOutlineForm5(forms.ModelForm):
-    EvaluationType = forms.CharField(label='Evaluation Type?', widget=forms.Select(choices=EvaluationTypes))
+    EvaluationType = forms.ChoiceField(widget=forms.Select(attrs={'class':'form-control'}),label='Evaluation type',choices=EvaluationTypes)
     EvaluationPercentage = forms.CharField(widget=forms.TextInput(attrs={'class':'form-control'}))
     class Meta:
         model = CourseOutlineSection5
