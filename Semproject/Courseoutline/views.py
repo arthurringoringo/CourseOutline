@@ -109,7 +109,7 @@ def Courseoutlinesectionscreate(request,courseoutline_id,template_name='Courseou
                     tempcourseoutline.CourseOutlineID = currentcourseoutlineobj
                     tempcourseoutline.save()
         
-                    return redirect('indexmenu')
+                    return redirect('courseoutlinesection4create',currentcourseoutlineobj.CourseOutlineID)
     context = {'courseoutlineForm1': courseoutlineForm1,'courseoutlineForm2': courseoutlineForm2,'courseoutlineForm3': courseoutlineForm3,
     'currentcourseoutlineobj':currentcourseoutlineobj,'title':'Course Outline','Course':currentcourseoutlineobj.CourseName,'CourseID':currentcourseoutlineobj.CourseCode}
     return render(request,'Courseoutline/courseOutlineSection1.html',context)
@@ -157,3 +157,24 @@ class CourseoutlineSection3Update(UpdateView):
         return object1
     def get_success_url(self):
         return reverse_lazy('courseoutlinesectionlist', args = (self.object.CourseOutlineID.CourseOutlineID,))
+
+def CourseoutlineSection4Create(request,courseoutline_id,template_name='Courseoutline/courseOutlineSection4.html'):
+    currentcourseoutlineobj = get_object_or_404(CourseOutline,pk = courseoutline_id)
+    courseoutlineForm4 = CreateCourseOutlineForm4()
+        
+    if request.method == 'POST' and 'savemultiple' in request.POST :
+        courseoutlineForm4 = CreateCourseOutlineForm4(request.POST)
+        if courseoutlineForm4.is_valid():
+                tempcourseoutline = courseoutlineForm4.save(commit=False)
+                tempcourseoutline.CourseOutlineID =currentcourseoutlineobj
+                tempcourseoutline.save()
+                return redirect('courseoutlinesection4create',courseoutline_id)
+    else:
+        courseoutlineForm4 = CreateCourseOutlineForm4(request.POST)
+        if courseoutlineForm4.is_valid():
+                tempcourseoutline = courseoutlineForm4.save(commit=False)
+                tempcourseoutline.CourseOutlineID =currentcourseoutlineobj
+                tempcourseoutline.save()
+                return redirect('indexmenu')
+    context = {'courseoutlineForm4': courseoutlineForm4,'currentcourseoutlineobj':currentcourseoutlineobj,'title':'Course Topics','Course':currentcourseoutlineobj.CourseName,'CourseID':currentcourseoutlineobj.CourseCode}
+    return render(request,'Courseoutline/courseOutlineSection4.html',context)
