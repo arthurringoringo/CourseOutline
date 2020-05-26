@@ -25,7 +25,7 @@ SECRET_KEY = 'uf4ohufxl7ysaf=f8j638!gxqnxp5c5&g-0p8%o3bb7jtvai80'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['http://sllash2000.pythonanywhere.com','127.0.0.1']
 
 
 # Application definition
