@@ -13,32 +13,69 @@
                 <button type="submit" class="btn btn-primary mb-2" >Next</button>
             <br>
             <br>
-            <!-- Make a divider for the view of the curriculum -->
             <h2>Available Curriculum</h2>
         </form>
-        <table class="table">
-        <thead>
-            <tr>
-            <th scope="col">No.</th>
-            <th scope="col">Curriculum Name</th>
-            <th scope="col">Faculty Name</th>
-            <th scope="col">Create Date</th>
-            </tr>
-        </thead>
-        <tbody>
-        {% if currentcurriculum %}
-            {% for curriculum in currentcurriculum %}
-                <tr>
-                    <th scope="row">{{forloop.counter}}</th>
-                    <td><a href =" {% url 'update' curriculum.CurriculumID %}"> {{curriculum.CurriculumName}}</a></td>
-                    <td>{{curriculum.FacultyName}}</td>
-                    <td>{{curriculum.CreateDate}}</td>
-                </tr>
-            </a>
-            {% endfor %}
-        {% endif %}  
+        <br>
+        <hr>
+        <br>
+        <!-- <table class="table">
+                <thead>
+                    <tr>
+                    <th scope="col">No.</th>
+                    <th scope="col">Curriculum Name</th>
+                    <th scope="col">Faculty Name</th>
+                    <th scope="col">Create Date</th>
+                    </tr>
+                </thead>
+                <tbody>
+                {% if currentcurriculum %}
+                    {% for curriculum in currentcurriculum %}
+                        <tr>
+                            <th scope="row">{{forloop.counter}}</th>
+                            <td><a href =" {% url 'update' curriculum.CurriculumID %}"> {{curriculum.CurriculumName}}</a></td>
+                            <td>{{curriculum.FacultyName}}</td>
+                            <td>{{curriculum.CreateDate}}</td>
+                        </tr>
+                    </a>
+                    {% endfor %}
+        {% endif %}   -->
 
-
+        <section class="testimonials text-center bg-light">
+            <div class="container">
+                {% if currentcurriculum %}
+                    {% for curriculum in currentcurriculum %}
+                        <div class="row">
+                            <div class="col-sm-6">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <h5 class="card-title">{{curriculum.CurriculumName}}</h5>
+                                        <p class="card-text">{{curriculum.FacultyName}}</p>
+                                        <a href =" {% url 'update' curriculum.CurriculumID %}" class="btn btn-primary">View</a>
+                                    </div>
+                                    <div class="card-footer">
+                                        <small class="text-muted">{{curriculum.CreateDate}}</small>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="card">
+                                    <div class="card-body">
+                                        <h5 class="card-title">{{curriculum.CurriculumName}}</h5>
+                                        <p class="card-text">{{curriculum.FacultyName}}</p>
+                                        <a href =" {% url 'update' curriculum.CurriculumID %}" class="btn btn-primary">View</a>
+                                    </div>
+                                    <div class="card-footer">
+                                        <small class="text-muted">{{curriculum.CreateDate}}</small>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <hr>
+                        <br>  
+                    {% endfor %}
+                {% endif %}  
+            </div>
+        </section>
 
     {% else %}
     <form method="POST"> 
@@ -46,7 +83,6 @@
           {{form.as_p}}
           <input type="submit" value="Update">
     </form>
-
     <br>
     <hr>
     <br>      
@@ -55,8 +91,6 @@
             <button type="submit" class="btn btn-danger">Delete</button>
     </form>
             
-
-
     {% endif %} 
 {% endblock %}
 

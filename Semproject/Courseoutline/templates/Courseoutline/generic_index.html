@@ -36,38 +36,38 @@
         </button>
     
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
-        <ul class="navbar-nav mr-auto">
-            <li class="nav-item active">
-            <a class="nav-link" href="{% url 'indexmenu' %}">Home <span class="sr-only">(current)</span></a>
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item active">
+                <a class="nav-link" href="{% url 'indexmenu' %}">Home <span class="sr-only">(current)</span></a>
 
-            <!-- Curriculum dropdown -->
-            <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="{% url 'indexmenu' %}" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    Curriculum
-                </a>
-                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="{% url 'curriculumcreate' %}">Create</a>
-                        <div class="dropdown-divider"></div>
-           
-                    </div>
-            </li>
+                <!-- Curriculum dropdown -->
+                <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="{% url 'indexmenu' %}" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Curriculum
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item" href="{% url 'curriculumcreate' %}">Create</a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="{% url '#' %}">View</a>
+                        </div>
+                </li>
 
-            <!-- Courseoutline dropdown -->
-            <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                    Course Outline
-                </a>
-                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="{% url 'courseoutlinecreate' %}">Create</a>
-                        <div class="dropdown-divider"></div>
-                 
-                    </div>
-            </li>
-        </ul>
-        <form class="form-inline my-2 my-lg-0">
-            <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-            <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-        </form>
+                <!-- Courseoutline dropdown -->
+                <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                            Course Outline
+                        </a>
+                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            <a class="dropdown-item" href="{% url 'courseoutlinecreate' %}">Create</a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="{% url 'courseoutlineview' %}">View</a>
+                        </div>
+                </li>
+            </ul>
+            <form class="form-inline my-2 my-lg-0">
+                <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
+                <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+            </form>
         </div>
     </nav>
 {% endblock %}
@@ -78,10 +78,12 @@
 <section class="testimonials text-center bg-light">
     <div class="container">
         <h2 class="mb-5">{{title}}</h2>
-           
-                <div class="container-fluid">
-                    {% block content %}{% endblock %}
+            <div class="container-fluid">
+                {% block content %}{% endblock %}
             </div>
      </div>
 </section>
 <!-- End of Content Section -->
+
+
+
