@@ -39,23 +39,36 @@
         <ul class="navbar-nav mr-auto">
             <li class="nav-item active">
             <a class="nav-link" href="{% url 'indexmenu' %}">Home <span class="sr-only">(current)</span></a>
-            </li>
-            <li class="nav-item">
-            <a class="nav-link" href="#">Link</a>
-            </li>
+            <!-- Curriculum dropdown -->
             <li class="nav-item dropdown">
-            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                Dropdown
-            </a>
-            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                <a class="dropdown-item" href="#">Action</a>
-                <a class="dropdown-item" href="#">Another action</a>
-                <div class="dropdown-divider"></div>
-                <a class="dropdown-item" href="#">Something else here</a>
-            </div>
+                <a class="nav-link dropdown-toggle" href="{% url 'indexmenu' %}" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Curriculum
+                </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="{% url 'curriculumcreate' %}">Create</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="#">View</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="#">Update</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="#">Delete</a>
+                    </div>
             </li>
-            <li class="nav-item">
-            <a class="nav-link disabled" href="#">Disabled</a>
+
+            <!-- Courseoutline dropdown -->
+            <li class="nav-item dropdown">
+                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    Course Outline
+                </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="{% url 'courseoutlinecreate' %}">Create</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="{% url 'indexmenu' %}">View</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="#">Update</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="#">Delete</a>
+                    </div>
             </li>
         </ul>
         <form class="form-inline my-2 my-lg-0">
