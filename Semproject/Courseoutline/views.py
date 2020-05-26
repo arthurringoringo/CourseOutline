@@ -12,6 +12,7 @@ from django.urls import reverse_lazy
 # Create your views here.
 
 def IndexMenu(request,template_name='Courseoutline/index.html'):
+    login_url = '/accounts/login/'
     return render(request,'Courseoutline/index.html')
 
 #### CURICULUM

@@ -68,6 +68,9 @@ TEMPLATES = [
     },
 ]
 
+
+
+
 WSGI_APPLICATION = 'Semproject.wsgi.application'
 
 
