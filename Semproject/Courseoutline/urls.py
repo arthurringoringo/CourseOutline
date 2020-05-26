@@ -22,7 +22,13 @@ urlpatterns = [
      path('update/sections2/<int:id>/',views.CourseoutlineSection2Update.as_view(),name='courseoutlinesectionupdate2'),
      path('update/sections3/<int:id>/',views.CourseoutlineSection3Update.as_view(),name='courseoutlinesectionupdate3'),
      path('create/sections4/<int:courseoutline_id>/',views.CourseoutlineSection4Create,name='courseoutlinesection4create'),
-     path('create/sections5/<int:courseoutline_id>/',views.CourseoutlineSection5Create,name='courseoutlinesection5create')
-
+     path('update/sections4/<int:id>/',views.CourseoutlineSection4Update.as_view(),name='courseoutlinesectionupdate4'),
+     path('delete/sections4/<int:courseoutlinesection_id>/',views.CourseoutlineSection4Delete,name='courseoutlinesectiondelete4'),
+     path('create/sections5/<int:courseoutline_id>/',views.CourseoutlineSection5Create,name='courseoutlinesection5create'),
+     path('update/sections5/<int:id>/',views.CourseoutlineSection5Update.as_view(),name='courseoutlinesectionupdate5'),
+     path('delete/sections5/<int:courseoutlinesection_id>/',views.CourseoutlineSection5Delete,name='courseoutlinesectiondelete5'),
+     path('create/sections6/<int:courseoutline_id>/',views.CourseoutlineSection6Create,name='courseoutlinesection6create'),
+     path('update/sections6/<int:id>/',views.CourseoutlineSection6Update.as_view(),name='courseoutlinesectionupdate6'),
+     path('delete/sections6/<int:courseoutlinesection_id>/',views.CourseoutlineSection6Delete,name='courseoutlinesectiondelete6'),
 ]
 

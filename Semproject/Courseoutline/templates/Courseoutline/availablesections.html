@@ -67,6 +67,76 @@
                     </tr>
 
                 </a>
+                {% for section4 in section4  %}
+
+                                </a>
+     
+                    <tr>
+                        <th scope="row">Section 4</th>
+                        <td><a href =" {% url 'courseoutlinesectionupdate4' section4.SectionID %}"> {{section4.SectionName}} --{{section4.CourseTopic}}</a></td>
+                        <td>{% if section4 == None %}None{% else %}Yes{% endif %}</td>
+                        <td><a href =" {% if section4 == None %}NotAvailable{% else %}{% url 'courseoutlinesectionupdate4' section4.SectionID %}">
+                                    <button type="submit" class="btn btn-info">Update</button></td>{% endif %}
+                        <td>   <form action = "{% url 'courseoutlinesectiondelete4' section4.SectionID %}" method="POST">
+                                    {% csrf_token %}
+                                    <button type="submit" class="btn btn-danger">Delete</button>
+                                </form>
+                        </td>
+                         <td>   <form action = "{% url 'courseoutlinesection4create' section4.CourseOutlineID.CourseOutlineID %}" method="POST">
+                                    {% csrf_token %}
+                                    <button type="submit" class="btn btn-danger">Add Section 4</button>
+                                </form>
+                        </td>
+                    </tr>
+
+                </a>
+ 
+                {% endfor %}
+
+                                {% for section5 in section5  %}
+
+                                </a>
+     
+                    <tr>
+                        <th scope="row">Section 5</th>
+                        <td><a href =" {% url 'courseoutlinesectionupdate5' section5.SectionID %}"> {{section5.SectionName}} --{{section5.EvaluationType}}</a></td>
+                        <td>{% if section5 == None %}None{% else %}Yes{% endif %}</td>
+                        <td><a href =" {% if section5 == None %}NotAvailable{% else %}{% url 'courseoutlinesectionupdate5' section5.SectionID %}">
+                                    <button type="submit" class="btn btn-info">Update</button></td>{% endif %}
+                        <td>   <form action = "{% url 'courseoutlinesectiondelete5' section5.SectionID %}" method="POST">
+                                    {% csrf_token %}
+                                    <button type="submit" class="btn btn-danger">Delete</button>
+                                </form>
+                        </td>
+                    </tr>
+
+                </a>
+ 
+                {% endfor %}
+                
+
+                                {% for section6 in section6  %}
+
+                                </a>
+     
+                    <tr>
+                        <th scope="row">Section 6</th>
+                        <td><a href =" {% url 'courseoutlinesectionupdate6' section6.SectionID %}"> {{section6.SectionName}} --{{section6.ResourcesTypes}}</a></td>
+                        <td>{% if section6 == None %}None{% else %}Yes{% endif %}</td>
+                        <td><a href =" {% if section6 == None %}NotAvailable{% else %}{% url 'courseoutlinesectionupdate6' section6.SectionID %}">
+                                    <button type="submit" class="btn btn-info">Update</button></td>{% endif %}
+                        <td>   <form action = "{% url 'courseoutlinesectiondelete6' section6.SectionID %}" method="POST">
+                                    {% csrf_token %}
+                                    <button type="submit" class="btn btn-danger">Delete</button>
+                                </form>
+                        </td>
+                    </tr>
+
+                </a>
+ 
+                {% endfor %}
+                
+                
   {% endif %}
             
  
@@ -118,6 +188,55 @@
             </form> 
                     <div class="container mt-3">
                     <a name="" id="" class="btn btn-primary" href="{% url 'courseoutlinesectionlist' courseoutlinesection3.CourseOutlineID.CourseOutlineID %}" role="button">go to section</a>
+                </div>
+            </div> 
+   {% endif %}
+
+    {% url 'courseoutlinesectionupdate4' id=courseoutlinesection4.SectionID as the_url4 %}
+   {% if  request.get_full_path == the_url4%}
+  
+        
+        <h4 class="mb-5">{{courseoutlinesection4.CourseOutlineID.CourseName}} | {{courseoutlinesection4.CourseOutlineID.CourseCode}}-Course Outline</h4>
+            <form method="post"> 
+                {% csrf_token %}
+                {{form.as_p}}
+                <button type="submit" class="btn btn-info" value="Update">Update</button>
+            </form> 
+                    <div class="container mt-3">
+                    <a name="" id="" class="btn btn-primary" href="{% url 'courseoutlinesectionlist' courseoutlinesection4.CourseOutlineID.CourseOutlineID %}" role="button">go to section</a>
+                </div>
+            </div> 
+   {% endif %}
+
+       {% url 'courseoutlinesectionupdate5' id=courseoutlinesection5.SectionID as the_url5 %}
+   {% if  request.get_full_path == the_url5%}
+  
+        
+        <h4 class="mb-5">{{courseoutlinesection5.CourseOutlineID.CourseName}} | {{courseoutlinesection5.CourseOutlineID.CourseCode}}-Course Outline</h4>
+            <form method="post"> 
+                {% csrf_token %}
+                {{form.as_p}}
+                <button type="submit" class="btn btn-info" value="Update">Update</button>
+            </form> 
+                    <div class="container mt-3">
+                    <a name="" id="" class="btn btn-primary" href="{% url 'courseoutlinesectionlist' courseoutlinesection5.CourseOutlineID.CourseOutlineID %}" role="button">go to section</a>
+                </div>
+            </div> 
+   {% endif %}
+       
+       
+       {% url 'courseoutlinesectionupdate6' id=courseoutlinesection6.SectionID as the_url6 %}
+   {% if  request.get_full_path == the_url6%}
+  
+        
+        <h4 class="mb-5">{{courseoutlinesection6.CourseOutlineID.CourseName}} | {{courseoutlinesection6.CourseOutlineID.CourseCode}}-Course Outline</h4>
+            <form method="post"> 
+                {% csrf_token %}
+                {{form.as_p}}
+                <button type="submit" class="btn btn-info" value="Update">Update</button>
+            </form> 
+                    <div class="container mt-3">
+                    <a name="" id="" class="btn btn-primary" href="{% url 'courseoutlinesectionlist' courseoutlinesection6.CourseOutlineID.CourseOutlineID %}" role="button">go to section</a>
                 </div>
             </div> 
    {% endif %}

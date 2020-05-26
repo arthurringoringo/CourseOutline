@@ -18,7 +18,7 @@ def IndexMenu(request,template_name='Courseoutline/index.html'):
 
 class CurriculumList(ListView):
     template_name = 'Courseoutline/curriculumView.html'
-    context_object_name = 'CourseOutline'
+    context_object_name = 'curriculum'
     model = Curriculum
     def get_queryset(self):
         return Curriculum.objects.order_by('pk')
@@ -74,9 +74,9 @@ def CourseoutlineView(request,courseoutline_id, tempalte_name = 'Courseoutline/c
     Section1 = CourseOutlineSection1.objects.filter(CourseOutlineID=courseoutline_id).first()
     Section2 = CourseOutlineSection2.objects.filter(CourseOutlineID=courseoutline_id).first()
     Section3 = CourseOutlineSection3.objects.filter(CourseOutlineID=courseoutline_id).first()
-    # Section4 = CourseOutlineSection1.list.filter(CourseOutlineID=courseoutline_id).first()
-    # Section5 = CourseOutlineSection2.list.filter(CourseOutlineID=courseoutline_id).first()
-    # Section6 = CourseOutlineSection3.list.filter(CourseOutlineID=courseoutline_id).first()
+    # Section4 = CourseOutlineSection1.list.filter(CourseOutlineID=courseoutline_id)
+    # Section5 = CourseOutlineSection2.list.filter(CourseOutlineID=courseoutline_id)
+    # Section6 = CourseOutlineSection3.list.filter(CourseOutlineID=courseoutline_id)
 
     context = {'CourseOutline' : CourseOutline1,'Section1':Section1,'Section2' : Section2,'Section3' : Section3,
     # 'Section4' : Section4,'Section5' : Section5,'Section6' : Section6,
@@ -137,8 +137,11 @@ def Courseoutlinesectionslist(request,courseoutline_id,tempalte_name = 'Courseou
     section1 = CourseOutlineSection1.objects.filter(CourseOutlineID=courseoutline_id).first()
     section2 = CourseOutlineSection2.objects.filter(CourseOutlineID=courseoutline_id).first()
     section3 = CourseOutlineSection3.objects.filter(CourseOutlineID=courseoutline_id).first()
+    section4 = CourseOutlineSection4.objects.filter(CourseOutlineID=courseoutline_id)
+    section5 = CourseOutlineSection5.objects.filter(CourseOutlineID=courseoutline_id)
+    section6 = CourseOutlineSection6.objects.filter(CourseOutlineID=courseoutline_id)
 
-    context = {'courseoutline' : courseoutline,'section1':section1,'section2' : section2,'section3' : section3,}
+    context = {'courseoutline' : courseoutline,'section1':section1,'section2' : section2,'section3' : section3,'section4':section4,'section5':section5,'section6':section6}
     return render(request,'Courseoutline/availablesections.html',context)
 
 class CourseoutlineSection1Update(UpdateView):
@@ -197,6 +200,25 @@ def CourseoutlineSection4Create(request,courseoutline_id,template_name='Courseou
     context = {'courseoutlineForm4': courseoutlineForm4,'currentcourseoutlineobj':currentcourseoutlineobj,'title':'Course Topics','Course':currentcourseoutlineobj.CourseName,'CourseID':currentcourseoutlineobj.CourseCode}
     return render(request,'Courseoutline/courseOutlineSection4.html',context)
 
+class CourseoutlineSection4Update(UpdateView):
+    model = CourseOutlineSection4
+    form_class = CreateCourseOutlineForm4
+    template_name = 'Courseoutline/availablesections.html'
+    def get_object(self):
+        SectionID = self.kwargs.get("id")
+        object1 = get_object_or_404(CourseOutlineSection4, SectionID=SectionID)
+        return object1
+    def get_success_url(self):
+        return reverse_lazy('courseoutlinesectionlist', args = (self.object.CourseOutlineID.CourseOutlineID,))
+
+def CourseoutlineSection4Delete(request,courseoutlinesection_id):
+    obj = get_object_or_404(CourseOutlineSection4,SectionID=courseoutlinesection_id)
+    if request.method == "POST":
+        currentCourseoutlineID = obj.CourseOutlineID.CourseOutlineID
+        obj.delete()
+        return redirect('courseoutlinesectionlist',currentCourseoutlineID)
+    return render(request,'courseOutlineSection.html')
+
 
 def CourseoutlineSection5Create(request,courseoutline_id,template_name='Courseoutline/courseOutlineSection5.html'):
     
@@ -221,3 +243,65 @@ def CourseoutlineSection5Create(request,courseoutline_id,template_name='Courseou
        return redirect('courseoutlinesection5create',courseoutline_id)
     context = {'courseoutlineForm5': courseoutlineForm5,'currentcourseoutlineobj':currentcourseoutlineobj,'title':'Course Topics','Course':currentcourseoutlineobj.CourseName,'CourseID':currentcourseoutlineobj.CourseCode}
     return render(request,'Courseoutline/courseOutlineSection5.html',context)
+
+class CourseoutlineSection5Update(UpdateView):
+    model = CourseOutlineSection5
+    form_class = CreateCourseOutlineForm5
+    template_name = 'Courseoutline/availablesections.html'
+    def get_object(self):
+        SectionID = self.kwargs.get("id")
+        object1 = get_object_or_404(CourseOutlineSection5, SectionID=SectionID)
+        return object1
+    def get_success_url(self):
+        return reverse_lazy('courseoutlinesectionlist', args = (self.object.CourseOutlineID.CourseOutlineID,))
+
+def CourseoutlineSection5Delete(request,courseoutlinesection_id):
+    obj = get_object_or_404(CourseOutlineSection5,SectionID=courseoutlinesection_id)
+    if request.method == "POST":
+        currentCourseoutlineID = obj.CourseOutlineID.CourseOutlineID
+        obj.delete()
+        return redirect('courseoutlinesectionlist',currentCourseoutlineID)
+    return render(request,'courseOutlineSection.html')
+
+def CourseoutlineSection6Create(request,courseoutline_id,template_name='Courseoutline/courseOutlineSection6.html'):
+    
+    currentcourseoutlineobj = get_object_or_404(CourseOutline,pk = courseoutline_id)
+    courseoutlineForm6 = CreateCourseOutlineForm6()
+        
+    if request.method == 'POST' and 'savemultiple' in request.POST :
+        courseoutlineForm6 = CreateCourseOutlineForm6(request.POST)
+        if courseoutlineForm6.is_valid():
+                tempcourseoutline = courseoutlineForm6.save(commit=False)
+                tempcourseoutline.CourseOutlineID =currentcourseoutlineobj
+                tempcourseoutline.save()
+                return redirect('courseoutlinesection6create',courseoutline_id)
+    elif request.method == 'POST' and 'saveandfinish' in request.POST :
+        courseoutlineForm6 = CreateCourseOutlineForm6(request.POST)
+        if courseoutlineForm6.is_valid():
+                tempcourseoutline = courseoutlineForm6.save(commit=False)
+                tempcourseoutline.CourseOutlineID =currentcourseoutlineobj
+                tempcourseoutline.save()
+                return redirect('courseoutlineview',courseoutline_id)
+    elif request.method == 'POST' and 'nextsection' in request.POST :
+       return redirect('courseoutlineview',courseoutline_id)
+    context = {'courseoutlineForm6': courseoutlineForm6,'currentcourseoutlineobj':currentcourseoutlineobj,'title':'Course Topics','Course':currentcourseoutlineobj.CourseName,'CourseID':currentcourseoutlineobj.CourseCode}
+    return render(request,'Courseoutline/courseOutlineSection6.html',context)
+
+class CourseoutlineSection6Update(UpdateView):
+    model = CourseOutlineSection6
+    form_class = CreateCourseOutlineForm6 
+    template_name = 'Courseoutline/availablesections.html'
+    def get_object(self):
+        SectionID = self.kwargs.get("id")
+        object1 = get_object_or_404(CourseOutlineSection6, SectionID=SectionID)
+        return object1
+    def get_success_url(self):
+        return reverse_lazy('courseoutlinesectionlist', args = (self.object.CourseOutlineID.CourseOutlineID,))
+
+def CourseoutlineSection6Delete(request,courseoutlinesection_id):
+    obj = get_object_or_404(CourseOutlineSection6,SectionID=courseoutlinesection_id)
+    if request.method == "POST":
+        currentCourseoutlineID = obj.CourseOutlineID.CourseOutlineID
+        obj.delete()
+        return redirect('courseoutlinesectionlist',currentCourseoutlineID)
+    return render(request,'courseOutlineSection.html')

@@ -67,8 +67,8 @@ class CreateCourseOutlineForm5(forms.ModelForm):
 
 
 class CreateCourseOutlineForm6(forms.ModelForm):
-    ResourcesTypes = forms.CharField(label='Resources Type?', widget=forms.Select(choices=ResourcesTypes))
-    ResourcesDescription = forms.CharField(widget=forms.Textarea(attrs={'class':'form-control','rows':'4'}))
+    ResourcesTypes = forms.ChoiceField(widget=forms.Select(attrs={'class':'form-control'}),label='Resource Type',choices=ResourcesTypes)
+    ResourcesDescription = forms.CharField(widget=forms.Textarea(attrs={'class':'form-control','rows':'4'}),label='Resource Description')
     class Meta:
         model = CourseOutlineSection6
         fields = 'ResourcesTypes', 'ResourcesDescription'
